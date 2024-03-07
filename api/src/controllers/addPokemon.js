@@ -1,23 +1,24 @@
 const axios = require('axios');
-
-URL_Pokemon = "https://pokeapi.co/api/v2/pokemon-species/"
+const { Pokemon } = require('../db')
 
 const addPokemon = async (req, res) => {
     try {
-        const charId = req.params.id;
-        const { data } = await axios.get(`${URL_Pokemon}`)
-        const { count } = data
-        const countApi = { count }
-            
-            countApi
-            ? res.json(countApi)
-            : res.status(404).send("Not found")
+        const { id, name, height, weight, image, hp, attack, defense, speed  } = req.body;
+        if (!id || !name || !height || !weight || !image || !hp || !attack || !defense || !speed ) {
+            return res.status(400).json({ message: 'Faltan datos' });
+          }
+
+          const [pokemon, created] = await Pokemon.findOrCreate({
+            where: { id },
+            defaults: { name, height, weight, image, hp, attack, defense, speed }
+          });
+          
+          res.json({ pokemon, created });
 
     } catch (error) {
-        //return res.status(500).send(error.message)
-        return res.status(404).send("Not found")
+        res.status(500).json({ error: error.message })
+        //return res.status(404).send("Not found")
     }
-
 }
 
 module.exports = addPokemon;

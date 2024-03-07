@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
 const getPokemons = require('./controllers/getPokemons');
+const addPokemon = require('./controllers/addPokemon');
 const getCharById = require('./controllers/getCharById');
 const getCharByName = require('./controllers/getCharByName');
 const getTypes = require('./controllers/getTypes');
@@ -39,6 +40,7 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
 });
 
 server.get("/pokemons/", getPokemons)
+server.post("/pokemons/", addPokemon)
 server.get("/pokemons/:id", getCharById)
 server.get("/pokemons/:name", getCharByName)
 server.get("/types/", getTypes)

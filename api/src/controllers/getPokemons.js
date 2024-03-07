@@ -1,7 +1,9 @@
 const axios = require('axios');
 const { Pokemon } = require('../db.js')
-const limitQuantity = 10
-const URL_Pokemons = "https://pokeapi.co/api/v2/pokemon?limit="+limitQuantity+"&offset=0" 
+const getCharByName = require('./getCharByName')
+require('dotenv').config();
+//const limitQuantity = 10
+const URL_Pokemons = "https://pokeapi.co/api/v2/pokemon?limit="+process.env.limitQuantity+"&offset=0" 
 
 const getPokemons = async (req, res) => {
     try {
@@ -13,22 +15,17 @@ const getPokemons = async (req, res) => {
         const pokemonNamesFromDBArray = pokemonNamesFromDB.map(pokemon => pokemon.name)
 
         const allPokemonNames = [...pokemonNamesFromAPI, ...pokemonNamesFromDBArray]
+        const response = { names: allPokemonNames };
 
-        const allPokemonData = await Promise.all(
-            allPokemonNames.map(async (name) => await getCharByName(name))
-        )
-        const response = allPokemonData.reduce((acc, pokemon, index) => {
-            acc[allPokemonNames[index]] = pokemon;
-            return acc;
-        }, {});
-
-            response
-            ? res.json(response)
-            : res.status(404).send("Not found")
+        return res.json(response)
+            // acc
+            // ? res.json(acc)
+            // : res.status(404).send("Not found")
 
     } catch (error) {
         //return res.status(500).send(error.message)
-        return res.status(404).send("Not found")
+        console.error(error)
+        return res.status(500).send("Internal Server Error")
     }
 
 }
