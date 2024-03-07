@@ -3,8 +3,14 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const routes = require('./routes/index.js');
+const getPokemons = require('./controllers/getPokemons');
+const getCharById = require('./controllers/getCharById');
+const getCharByName = require('./controllers/getCharByName');
+const getTypes = require('./controllers/getTypes');
 
 require('./db.js');
+//const { Pokemon } = require('./db').sequelizePokemon;
+//const { Type } = require('./db').sequelizeType;
 
 const server = express();
 
@@ -15,7 +21,7 @@ server.use(bodyParser.json({ limit: '50mb' }));
 server.use(cookieParser());
 server.use(morgan('dev'));
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', 'http://localhost:3001'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
@@ -31,5 +37,14 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   console.error(err);
   res.status(status).send(message);
 });
+
+server.get("/pokemons/", getPokemons)
+server.get("/pokemons/:id", getCharById)
+server.get("/pokemons/:name", getCharByName)
+server.get("/types/", getTypes)
+//server.get("/pokeapi/login", login)
+server.get("/", (req, res) => {
+   res.json({ message: "No hay nada aca" });
+ })
 
 module.exports = server;
