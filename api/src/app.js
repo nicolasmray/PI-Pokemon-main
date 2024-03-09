@@ -9,9 +9,12 @@ const getCharById = require('./controllers/getCharById');
 const getCharByName = require('./controllers/getCharByName');
 const getTypes = require('./controllers/getTypes');
 
-require('./db.js');
-//const { Pokemon } = require('./db').sequelizePokemon;
-//const { Type } = require('./db').sequelizeType;
+// const sequelize = require('./db.js');
+// const Pokemon = require('./models/Pokemon.js') //.sequelizePokemon;
+// const Type = require('./models/Type.js') //.sequelizeType;
+
+// Pokemon(sequelize)
+// Type(sequelize)
 
 const server = express();
 
@@ -31,6 +34,15 @@ server.use((req, res, next) => {
 
 server.use('/', routes);
 
+// sequelize.sync({ force: false }) // Set force to true if you want to drop and recreate tables on every sync
+//    .then(() => {
+//       // Start your application or perform other actions after syncing
+//       console.log('Database synced successfully');
+//    })
+//    .catch((error) => {
+//       console.error('Error syncing database:', error);
+//    });
+
 // Error catching endware.
 server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   const status = err.status || 500;
@@ -39,11 +51,11 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(status).send(message);
 });
 
-server.get("/pokemons/", getPokemons)
-server.post("/pokemons/", addPokemon)
 server.get("/pokemons/:id", getCharById)
 server.get("/pokemons/:name", getCharByName)
 server.get("/types/", getTypes)
+server.get("/pokemons/", getPokemons)
+server.post("/pokemons/", addPokemon)
 //server.get("/pokeapi/login", login)
 server.get("/", (req, res) => {
    res.json({ message: "No hay nada aca" });

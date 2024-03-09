@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Pokemon } = require('../db')
+const { Pokemons } = require('../db')
 
 const addPokemon = async (req, res) => {
     try {
@@ -8,7 +8,7 @@ const addPokemon = async (req, res) => {
             return res.status(400).json({ message: 'Faltan datos' });
           }
 
-          const [pokemon, created] = await Pokemon.findOrCreate({
+          const [pokemon, created] = await Pokemons.findOrCreate({
             where: { id },
             defaults: { name, height, weight, image, hp, attack, defense, speed }
           });

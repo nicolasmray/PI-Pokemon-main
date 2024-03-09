@@ -7,6 +7,10 @@ const getCharById = require("../controllers/getCharById")
 const getCharByName = require("../controllers/getCharByName")
 const getTypes = require("../controllers/getTypes")
 
+// const PokemonModel = require('../models/Pokemon.js') //.sequelizePokemon;
+// const TypeModel = require('../models/Type.js') //.sequelizeType;
+// require('../db.js');
+
 const router = Router();
 
 // Configurar los routers

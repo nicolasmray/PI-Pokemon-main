@@ -1,5 +1,5 @@
 const axios = require('axios');
-const { Pokemon } = require('../db.js')
+const { Pokemons } = require('../db.js')
 const getCharByName = require('./getCharByName')
 require('dotenv').config();
 //const limitQuantity = 10
@@ -11,7 +11,7 @@ const getPokemons = async (req, res) => {
         const { results } = data
         const pokemonNamesFromAPI = results.map(pokemon => pokemon.name)
 
-        const pokemonNamesFromDB = await Pokemon.findAll({ attributes: ['name'] });
+        const pokemonNamesFromDB = await Pokemons.findAll({ attributes: ['name'] });
         const pokemonNamesFromDBArray = pokemonNamesFromDB.map(pokemon => pokemon.name)
 
         const allPokemonNames = [...pokemonNamesFromAPI, ...pokemonNamesFromDBArray]
