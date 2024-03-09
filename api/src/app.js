@@ -51,8 +51,8 @@ server.use((err, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(status).send(message);
 });
 
+server.get("/pokemons/name", getCharByName)
 server.get("/pokemons/:id", getCharById)
-server.get("/pokemons/:name", getCharByName)
 server.get("/types/", getTypes)
 server.get("/pokemons/", getPokemons)
 server.post("/pokemons/", addPokemon)

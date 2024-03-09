@@ -1,10 +1,23 @@
 const axios = require('axios');
+const { Pokemons } = require('../db')
 //require('dotenv').config();
 const URL_ID = "https://pokeapi.co/api/v2/pokemon/" 
 
 const getCharById = async (req, res) => {
     try {
-        const charId = req.params.id;
+        const charId = parseInt(req.params.id)
+
+        const dbPokemon = await Pokemons.findOne({
+            where: {
+                id:    charId
+            }
+        });
+        if (dbPokemon) {
+            console.log("Found in db:", dbPokemon)
+            // If data is found in the database, send the database entry
+            return res.json(dbPokemon);
+        }
+
         const { data } = await axios.get(`${URL_ID}${charId}`) //?limit=${process.env.limitQuantity}
         const { id, name, height, weight, sprites, stats, types } = data
         const typeNames = types.map(type => type.type.name)
