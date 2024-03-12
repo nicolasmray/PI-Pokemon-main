@@ -1,0 +1,17 @@
+.searchButton {
+    color:gray;
+    background-color: rgb(244, 244, 175);
+}
+
+.addRandomButton {
+    color:gray;
+    background-color: rgb(244, 244, 175);
+}
+
+.searchBar {
+    background-color: rgb(238, 238, 199);
+    height: 90%;
+    border: 0;
+
+    
+} 

@@ -1,0 +1,23 @@
+.outterContainer {
+    width: 100%;
+    margin-top: 0.3%;
+    display: flexbox;
+    justify-content: center;
+    background-color: rgb(244, 244, 175);
+    position: fixed;
+}
+
+.innerContainer {
+    width: 50%;
+    display:flex;
+    justify-content: space-between;
+    margin: 0%;
+    background-color: rgb(244, 244, 175);
+}
+
+
+.button {
+    color:gray;
+    border-color: rgb(244, 244, 175);
+    background-color: rgb(214, 219, 185);
+}

@@ -1,0 +1,21 @@
+.container {
+    color: black;
+    background-color: lightgray;
+    border-radius: 20px;
+    width: 20%;
+    margin: 2%;
+    padding: 1%;
+
+}
+
+.closeButton {
+    color: whitesmoke;
+    background-color: lightcoral;
+    width: 30%;
+}
+
+.image {
+    height: auto;
+    width: 100%;
+    border-radius: 20px;
+}
