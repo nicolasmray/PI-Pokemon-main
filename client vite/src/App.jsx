@@ -7,6 +7,7 @@ import Nav from './components/Nav/Nav.jsx'
 import Landing from './components/Landing/Landing.jsx'
 import Cards from './components/Cards/Cards.jsx'
 import Detail from './components/Detail/Detail.jsx'
+import Form from './components/Form/Form.jsx'
 
 function App() {
   const [characters, setCharacters] = useState([])
@@ -24,9 +25,9 @@ function App() {
       // If you want to do something else when the route is "/"
       // you can put that logic here
     }
-    else if (pathname === '/detail/:id'){
-      navigate('/detail/:id');
-    }
+    // else if (pathname === '/detail/:id'){
+    //   navigate('/detail/:id');
+    // }
   }, [location, navigate])
 
   useEffect(() => {
@@ -35,23 +36,19 @@ function App() {
       try {
         // Fetch Pokémon names
         const { data: { names } } = await axios.get(`${URL}/`);
-
         // Fetch details for each Pokémon
         const detailsPromises = names.map(async (name) => {
           const { data: details } = await axios.get(`${URL}/name?name=${name}`);
           return details;
         });
-
         // Wait for all details requests to complete
         const detailsData = await Promise.all(detailsPromises);
-
         // Set the characters state with the combined data
         setCharacters(detailsData);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-
     fetchData();
   }, [])
 
@@ -78,7 +75,7 @@ try {
     if(!id && id != 'Agregar personaje Aleatorio' ) return alert('Ingresa un ID')
     if(characters.find(char => char.id == id)) return alert('Ya existe un personaje con el ID: ' + id)
 
-const { data } = await axios.get(`${URL}${id}`)
+const { data } = await axios.get(`${URL}/${id}`)
 if(data.name){
 setCharacters([data,...characters])
 }else{
@@ -97,6 +94,7 @@ alert(err.message)
             <Route path='/' element={<Landing/>} />
             <Route path='/pokemons' element={<Cards characters={characters} />} />
             <Route path='/detail/:id' element={<Detail/>} />
+            <Route path='/new/' element={<Form/>} />
           </Routes>
 
       </div>

@@ -22,7 +22,7 @@ function Card({id, name, height, weight, image, hp, attack, defense, speed, type
          <h2>Attack: {attack}</h2>
          <h2>Defense: {defense}</h2>
          <h2>Speed: {speed}</h2>
-         <h2>Types: {types}</h2>
+         <h2>Types: {types.join(', ')}</h2>
           
       </div>
    );

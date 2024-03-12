@@ -30,7 +30,7 @@ function Detail() {
         <h4>Attack: { character.attack} </h4>
         <h4>Defense: { character.defense} </h4>
         <h4>Speed: { character.speed} </h4>
-        <h4>Type: { character.types} </h4>
+        <h4>Type: {character.types && character.types.join(', ')} </h4>
 
     </div>;
 }

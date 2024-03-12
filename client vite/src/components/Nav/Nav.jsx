@@ -11,6 +11,10 @@ function Nav({onSearch}){
         // Navigate to the landing page
         navigate('/')
       }
+      const handleFormClick = () => {
+        // Navigate to the landing page
+        navigate('/new/')
+      }
 
 
     return <div className={style.outterContainer}>
@@ -18,6 +22,7 @@ function Nav({onSearch}){
               <Link to='/pokemons'><button className={style.button}>Home</button></Link>
               <button onClick={handleLandingClick} className={style.landingButton}>Landing</button>
               <SearchBar onSearch={onSearch} />
+              <button onClick={handleFormClick} className={style.formButton}>Add New Pokemon</button>
             </div>
             </div>
 }
