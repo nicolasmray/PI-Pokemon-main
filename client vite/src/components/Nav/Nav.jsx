@@ -4,7 +4,7 @@ import style from './Nav.module.css'
 
 
 
-function Nav({onSearchId}){
+function Nav({onSearchId, onSearchName}){
     const navigate = useNavigate()
 
       const handleLandingClick = () => {
@@ -22,7 +22,7 @@ function Nav({onSearchId}){
            <div className={style.innerContainer}> 
               <Link to='/pokemons'><button className={style.button}>Home</button></Link>
               <button onClick={handleLandingClick} className={style.landingButton}>Landing</button>
-              <SearchBar onSearchId={onSearchId} />
+              <SearchBar onSearchId={onSearchId} onSearchName={onSearchName} />
               <button onClick={handleFormClick} className={style.formButton}>Add New Pokemon</button>
             </div>
             </div>

@@ -72,17 +72,33 @@ const { data } = await axios.get(`${URL}/${id}`)
 if(data.name){
 setCharacters([data,...characters])
 }else{
-alert('No hay personajes con ese ID/Nombre')
+alert('No hay personajes con ese ID')
 }
 } catch (error) {
 alert(err.message)
 }     
 }
 
+const onSearchName = async (name) => {
+try {
+    if(!name) return alert('Ingrese un Nombre')
+    if(characters.find(char => char.name == name)) return alert('Ya existe un personaje con el Nombre: ' + name)
+
+const { data } = await axios.get(`${URL}/name?name=${name}`)
+if(data && data.name){ // REVISAR ESTA LINEA DATA.NAME
+setCharacters([data,...characters])
+}else{
+alert('No hay personajes con ese Nombre')
+}
+} catch (error) {
+console.log(error.message)
+alert('No se encontró personaje con ese nombre. Introduzca un nombre válido')
+}     
+}
   return (
     <>
       <div className='App'>
-         <div className='NavBar'>{ pathname !== '/' && <Nav onSearchId={onSearchId} />}</div> 
+         <div className='NavBar'>{ pathname !== '/' && <Nav onSearchId={onSearchId} onSearchName={onSearchName}/>}</div> 
           <Routes>
             <Route path='/' element={<Landing onDataChange={onDataChange}/>} /> 
             <Route path='/pokemons' element={<Cards characters={characters} />} />
