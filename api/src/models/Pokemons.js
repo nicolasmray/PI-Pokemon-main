@@ -43,10 +43,10 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    // types: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
+    types: {
+       type: DataTypes.ARRAY(DataTypes.STRING),
+       allowNull: false,
+     },
   });
 
 };

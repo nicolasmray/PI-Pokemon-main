@@ -14,7 +14,7 @@ const getCharByName = async (req, res) => {
 
         if (dbPokemon) {
             // If data is found in the database, send the database entry
-            const { id, name, height, weight, image, hp, attack, defense, speed, createdAt, updatedAt } = dbPokemon;
+            const { id, name, height, weight, image, hp, attack, defense, speed, types, createdAt, updatedAt } = dbPokemon;
             const completePokemonData = {
                 id,
                 name,
@@ -25,6 +25,7 @@ const getCharByName = async (req, res) => {
                 attack,
                 defense,
                 speed,
+                types, //no existia y arriba tampoco si lo tengo que borrar
                 createdAt,
                 updatedAt }
 
@@ -47,15 +48,17 @@ const getCharByName = async (req, res) => {
             speed: stats[5].base_stat, 
             types: types.map(type => type.type.name)
         } 
+        //res.json(character || {});
             //return res.json(character)
-            character
-            ? res.json(character)
-            : res.status(404).send("Not found")
+             character
+             ? res.json(character)
+             : res.status(404).send("Not found")
                
 
     } catch (error) {
         //return res.status(500).send("Internal server error")
         //return res.status(500).send(error.message)
+        console.error(error)
         return res.status(500).send("Internal Server Error")
     }
 

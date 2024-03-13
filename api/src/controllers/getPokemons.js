@@ -1,6 +1,6 @@
 const axios = require('axios');
 const { Pokemons } = require('../db.js')
-const getCharByName = require('./getCharByName')
+//const getCharByName = require('./getCharByName')
 require('dotenv').config();
 //const limitQuantity = 10
 const URL_Pokemons = "https://pokeapi.co/api/v2/pokemon?limit="+process.env.limitQuantity+"&offset=0" 

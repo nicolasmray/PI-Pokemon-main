@@ -1,16 +1,29 @@
 import React from "react";
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import style from './Landing.module.css'
 
-function Landing() {
+function Landing() { // {setCharacters}, onStartClick
 
     const navigate = useNavigate();
+    const URL = 'http://localhost:3001/pokemons/'
 
-    const handleStartClick = () => {
+    const handleStartClick = async () => {
         // Perform any other actions needed before navigating
         // ...
-        () => alert("Button clicked!")
-    
+       
+        alert("Welcome to pokemon App!")
+        try {
+            //const reset = await axios.delete(`${URL}`);
+            //console.log(reset.data); // Log the response for debugging
+
+            //setCharacters([])
+            //onUpdateCharacters([])
+            //onStartClick()
+          } catch (error) {
+            console.error('Error resetting Pokemon database:', error);
+          }
+        
         // Navigate to the "/pokemons" route
         navigate('/pokemons');
       };

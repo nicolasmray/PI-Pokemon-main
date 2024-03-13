@@ -5,11 +5,15 @@ import { Link, useLocation } from 'react-router-dom'
 import style from './Card.module.css'
 // aplicamos destructuring de las variables de input a Card para no tener que usar "props" y props.name , etc.
 
-function Card({id, name, height, weight, image, hp, attack, defense, speed, types}) {
+function Card({id, name, height, weight, image, hp, attack, defense, speed, types}) { //le agregue el pokemon y abajo tambien
 
-
+    const formattedTypes = types && types.length > 1 ? types.join(', ') : types
+    
+    // let defaultImage = 'https://i.pinimg.com/736x/34/c1/e5/34c1e5d371d64a581b1902ec5c4509f4.jpg';
+    // if (image !== null) {
+    // defaultImage = image;}
    //const { pathname } = useLocation()
-
+  //const hasTypes = types && types.length > 0;
 
    return (
       <div className={style.container} >
@@ -22,7 +26,7 @@ function Card({id, name, height, weight, image, hp, attack, defense, speed, type
          <h2>Attack: {attack}</h2>
          <h2>Defense: {defense}</h2>
          <h2>Speed: {speed}</h2>
-         <h2>Types: {types.join(', ')}</h2>
+         <h2>Types: {formattedTypes}</h2>
           
       </div>
    );
@@ -30,3 +34,4 @@ function Card({id, name, height, weight, image, hp, attack, defense, speed, type
 
 
 export default (Card)
+

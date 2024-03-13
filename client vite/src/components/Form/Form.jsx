@@ -3,7 +3,7 @@ import axios from 'axios'
 import validation from "./validation.js"
 import style from './Form.module.css'
 
-function Form({data}) {
+function Form({data, onDataChange }) {
     const [userData, setUserData] = useState({
       id:'',
       name:'',
@@ -14,18 +14,28 @@ function Form({data}) {
       attack:'',
       defense:'',
       speed:'',
-      types:'',
+      types:[], //le agregue el pokemon
     })
 
     const[errors, setErrors] = useState({})
     //const [successMessage, setSuccessMessage] = useState(null);
 
 
-    const handleChange = (evento) => {
-        setErrors(validation({...userData, [evento.target.name]:evento.target.value}))
-        setUserData({...userData, [evento.target.name]:evento.target.value})
+    // const handleChange = (evento) => {
+    //     setErrors(validation({...userData, [evento.target.name]:evento.target.value}))
+    //     setUserData({...userData, [evento.target.name]:evento.target.value})
+    //     onDataChange && onDataChange({ ...userData, [evento.target.name]: evento.target.value })
+    // }
 
-    }
+    const handleChange = (evento) => {
+        if (evento.target.name === 'types') { //le agregue el pokemon
+          // Split the input string into an array of types
+          setUserData({ ...userData, [evento.target.name]: evento.target.value.split(', ') });
+        } else {
+          setUserData({ ...userData, [evento.target.name]: evento.target.value });
+        }
+        setErrors(validation({ ...userData, [evento.target.name]: evento.target.value }));
+      };
 
     const handleSubmit = async (evento) => {
       evento.preventDefault()
@@ -36,8 +46,12 @@ function Form({data}) {
         // Handle the response accordingly
         console.log(response.data); // You may want to handle this response in a different way based on your requirements
         //setSuccessMessage('Pokemon added successfully!')
-        if (response.data.created === true) alert('Pokemon added successfully!')
-        if (response.data.created === false) alert('El pokemon ya existe en la base de datos!')
+        if (response.data.created === true) {
+            alert('Pokemon added successfully!');
+            onDataChange && onDataChange(response.data.pokemon); // Call the callback function to update state
+          } else if (response.data.created === false) {
+            alert('El pokemon ya existe en la base de datos!');
+          }
         // You can also pass the response data to the parent component if needed
         //data(response.data);
       } catch (error) {
@@ -105,7 +119,7 @@ function Form({data}) {
         <br/>
         <label htmlFor="types">
         Types: 
-           <input type="text" placeholder="Insert Types" id="types" name="types" value={userData.types} onChange={handleChange} className={errors.types ? style.error : style.characteristic}/>
+            <textarea  placeholder="Insert Types (comma-separated)" id="types" name="types" value={userData.types.join(', ')} onChange={handleChange} className={errors.types ? style.error : style.characteristic}/>
         </label>
         { errors.types && <p>{errors.types}</p> }
         <br/>

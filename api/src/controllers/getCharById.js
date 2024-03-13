@@ -31,7 +31,7 @@ const getCharById = async (req, res) => {
             attack: stats[1].base_stat, 
             defense: stats[2].base_stat, 
             speed: stats[5].base_stat, 
-            types: typeNames 
+            types: typeNames //le agregue el pokemon
         }
             
             character
