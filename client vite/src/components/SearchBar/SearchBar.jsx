@@ -10,11 +10,11 @@ export default function SearchBar(props) {
    }
 
    const search = () => {
-      props.onSearch(id)
+      props.onSearchId(id)
       setId('')
    }
    const RandomCharacter = () => {
-    props.onSearch('Agregar personaje Aleatorio')
+    props.onSearchId('Agregar personaje Aleatorio')
     setId('')
  }
    const handleTypeChange = (event) => {

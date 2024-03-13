@@ -8,7 +8,7 @@ const resetPokemonDb = async (req, res) => {
         await Pokemons.destroy({ where: {}, limit:10 });
         console.log('Deletion completed.')
         //await Type.destroy({ where: {}});
-        res.status(200).json({ message: 'Deletion completed successfully.' })
+        res.status(200).json({ message: 'Database reset completed successfully.' })
 
       } catch (error) {
         res.status(500).json({ error: error.message });

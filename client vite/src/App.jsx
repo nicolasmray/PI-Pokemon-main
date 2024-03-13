@@ -47,7 +47,7 @@ function App() {
     fetchDataAndHandleChange();
   }, [pathname, onDataChange]);
   
-  const onSearch = async (id) => {
+  const onSearchId = async (id) => {
   function getRandomId() {
     const numeroDecimal = Math.random();
     const numeroEntre0y1025 = numeroDecimal * 1026;
@@ -82,7 +82,7 @@ alert(err.message)
   return (
     <>
       <div className='App'>
-         <div className='NavBar'>{ pathname !== '/' && <Nav onSearch={onSearch} />}</div> 
+         <div className='NavBar'>{ pathname !== '/' && <Nav onSearchId={onSearchId} />}</div> 
           <Routes>
             <Route path='/' element={<Landing onDataChange={onDataChange}/>} /> 
             <Route path='/pokemons' element={<Cards characters={characters} />} />
