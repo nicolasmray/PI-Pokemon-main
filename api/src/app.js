@@ -59,7 +59,7 @@ server.get("/pokemons/:id", getCharById)
 server.get("/types/", getTypes)
 server.get("/pokemons/", getPokemons)
 server.post("/pokemons/", addPokemon)
-server.delete("/pokemons/", resetPokemonDb)
+server.delete("/resetpokemons/", resetPokemonDb)
 //server.get("/pokeapi/login", login)
 server.get("/", (req, res) => {
    res.json({ message: "No hay nada aca" });

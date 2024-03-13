@@ -21,7 +21,7 @@ router.get("/pokemons/:id", getCharById)
 router.get("/pokemons/", getPokemons)
 router.get("/types/", getTypes)
 router.post("/pokemons/", addPokemon)
-router.delete("/pokemons/", resetPokemonDb)
+router.delete("/resetpokemons/", resetPokemonDb)
 
 
 module.exports = router;

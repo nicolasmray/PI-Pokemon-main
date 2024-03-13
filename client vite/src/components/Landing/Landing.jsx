@@ -3,10 +3,10 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import style from './Landing.module.css'
 
-function Landing() { // {setCharacters}, onStartClick
+function Landing({ onDataChange }) { // {setCharacters}, onStartClick
 
     const navigate = useNavigate();
-    const URL = 'http://localhost:3001/pokemons/'
+    const URL = 'http://localhost:3001/resetpokemons/'
 
     const handleStartClick = async () => {
         // Perform any other actions needed before navigating
@@ -14,12 +14,13 @@ function Landing() { // {setCharacters}, onStartClick
        
         alert("Welcome to pokemon App!")
         try {
-            //const reset = await axios.delete(`${URL}`);
-            //console.log(reset.data); // Log the response for debugging
+            const reset = await axios.delete(`${URL}`);
+            console.log(reset.data); // Log the response for debugging
 
             //setCharacters([])
             //onUpdateCharacters([])
             //onStartClick()
+            onDataChange([])
           } catch (error) {
             console.error('Error resetting Pokemon database:', error);
           }

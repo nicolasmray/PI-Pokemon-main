@@ -9,6 +9,7 @@ function Nav({onSearch}){
 
       const handleLandingClick = () => {
         // Navigate to the landing page
+        //onDataChange([])
         navigate('/')
       }
       const handleFormClick = () => {
