@@ -26,6 +26,7 @@ function App() {
   const fetchDataAndHandleChange = async () => {
     try {
       if (pathname === '/') { //startClicked && 
+        //if (characters.length === 0) {
         // Fetch Pokémon names
         const { data: { names } } = await axios.get(`${URL}/`);
         // Fetch details for each Pokémon
@@ -37,7 +38,7 @@ function App() {
         const detailsData = await Promise.all(detailsPromises);
         // Set the characters state with the combined data
         setCharacters(detailsData);
-       } 
+      }//} 
     } catch (error) {
       console.error('Error fetching data:', error);
     }

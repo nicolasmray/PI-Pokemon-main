@@ -8,7 +8,7 @@ export default function Cards(props) {
       <div className={style.container}>
          {characters.map(char => (
             <Card 
-               key={char.id}
+               //key={char.id} -- APAGUE LA KEY!! VOLVER ACTIVAR SI NECESARIO
                id={char.id}
                //fid={char.fid}
                name={char.name} 
