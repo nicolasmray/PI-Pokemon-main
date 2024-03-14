@@ -14,9 +14,10 @@ const getCharByName = async (req, res) => {
 
         if (dbPokemon) {
             // If data is found in the database, send the database entry
-            const { id, name, height, weight, image, hp, attack, defense, speed, types, createdAt, updatedAt } = dbPokemon;
+            const { id, name, height, weight, image, hp, attack, defense, speed, types, createdAt, updatedAt } = dbPokemon; //, fid
             const completePokemonData = {
                 id,
+                //fid,
                 name,
                 height,
                 weight,
@@ -37,7 +38,8 @@ const getCharByName = async (req, res) => {
         const { id, name, height, weight, sprites, stats, types } = data
         //const typeNames = types.map(type => type.type.name)
         const character = { 
-            id, 
+            id,
+            //fid: id, 
             name, 
             height, 
             weight, 

@@ -10,6 +10,7 @@ export default function Cards(props) {
             <Card 
                key={char.id}
                id={char.id}
+               //fid={char.fid}
                name={char.name} 
                height={char.height}
                weight={char.weight}

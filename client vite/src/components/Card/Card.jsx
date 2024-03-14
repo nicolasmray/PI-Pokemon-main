@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom'
 import style from './Card.module.css'
 // aplicamos destructuring de las variables de input a Card para no tener que usar "props" y props.name , etc.
 
-function Card({id, name, height, weight, image, hp, attack, defense, speed, types}) { //le agregue el pokemon y abajo tambien
+function Card({id, name, height, weight, image, hp, attack, defense, speed, types}) { //, fid
 
     const formattedTypes = types && types.length > 1 ? types.join(', ') : types
     
@@ -18,6 +18,7 @@ function Card({id, name, height, weight, image, hp, attack, defense, speed, type
    return (
       <div className={style.container} >
          <h2>Id number: {id}</h2>
+         {/* <h2>FId number: {fid}</h2> */}
       <Link to={`/detail/${id}`} ><h2>Name: {name}</h2></Link>
          <h2>Height: {height}</h2>
          <h2>Weight: {weight}</h2>
