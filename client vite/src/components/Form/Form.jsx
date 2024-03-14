@@ -5,7 +5,7 @@ import style from './Form.module.css'
 
 function Form({data, onDataChange }) {
     const [userData, setUserData] = useState({
-      id:'',
+      //id:'',
       name:'',
       height:'',
       weight:'',
@@ -63,12 +63,6 @@ function Form({data, onDataChange }) {
   return <div className={style.container} >
         <img src={"https://64.media.tumblr.com/61c23463929fd552d6dfc5f757538f49/tumblr_p23duqIatc1td9nt5o1_540.gif"} alt="error" className={style.img} />
         <form onSubmit={handleSubmit} className={style.form}>
-        <label htmlFor="id">
-          ID: 
-          <input type="number" placeholder="Insert ID" id="id" name="id" value={userData.id} onChange={handleChange} className={errors.id ? style.error : style.id}/>
-        </label>
-        { errors.id && <p>{errors.id}</p> }
-        <br />
         <label htmlFor="name">
            Name: 
            <input type="text" placeholder="Insert Name" id="name" name="name" value={userData.name} onChange={handleChange} className={errors.name ? style.error : style.name}/>
@@ -133,3 +127,9 @@ function Form({data, onDataChange }) {
 
 export default Form
        
+        // <label htmlFor="id">
+        //   ID: 
+        //   <input type="number" placeholder="Insert ID" id="id" name="id" value={userData.id} onChange={handleChange} className={errors.id ? style.error : style.id}/>
+        // </label>
+        // { errors.id && <p>{errors.id}</p> }
+        // <br />

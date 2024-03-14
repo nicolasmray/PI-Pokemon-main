@@ -3,13 +3,13 @@ const { Pokemons } = require('../db')
 
 const addPokemon = async (req, res) => {
     try {
-        const { id, name, height, weight, image, hp, attack, defense, speed, types  } = req.body;
-        if (!id || !name || !height || !weight || !image || !hp || !attack || !defense || !speed || !types ) {
+        const { name, height, weight, image, hp, attack, defense, speed, types  } = req.body; //id, 
+        if (!name || !height || !weight || !image || !hp || !attack || !defense || !speed || !types ) { //!id || 
             return res.status(400).json({ message: 'Faltan datos' });
           }
 
           const [pokemon, created] = await Pokemons.findOrCreate({
-            where: { id },
+            where: { name }, //id
             defaults: { name, height, weight, image, hp, attack, defense, speed, types } //le agregue el pokemon y arriba tambien
           });
           
