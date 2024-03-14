@@ -8,3 +8,27 @@
    padding-top: 3%;
 
 }
+
+.inputContainer:hover {
+    position: relative;
+  }
+  
+  .inputContainer:hover::before {
+    content: "Press ENTER"; /* Text to display on hover */
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007bff; /* Background color of the tooltip */
+    color: #fff; /* Text color of the tooltip */
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .enterMessage {
+    text-align: center;
+    font-size: 12px;
+    color: black; /* Color of the message */
+  }
