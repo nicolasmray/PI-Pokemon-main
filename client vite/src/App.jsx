@@ -5,15 +5,17 @@ import axios from 'axios';
 import './App.css'
 import Nav from './components/Nav/Nav.jsx'
 import Landing from './components/Landing/Landing.jsx'
-import Cards from './components/Cards/Cards.jsx'
+//import Cards from './components/Cards/Cards.jsx'
+import Pages from './components/Pages/Pages.jsx'
 import Detail from './components/Detail/Detail.jsx'
 import Form from './components/Form/Form.jsx'
 
-function App() {
+function App() { 
   const [characters, setCharacters] = useState([])
   const { pathname } = useLocation();
   const navigate = useNavigate();
-
+  
+  
   const URL = 'http://localhost:3001/pokemons'
   
   const onDataChange = (newPokemon) => {
@@ -22,7 +24,8 @@ function App() {
   const onUpdateCharacters = (newPokemon) => {
     setCharacters([]);
   };
-
+  
+  
   const fetchDataAndHandleChange = async () => {
     try {
       if (pathname === '/') { //startClicked && 
@@ -43,11 +46,18 @@ function App() {
       console.error('Error fetching data:', error);
     }
   };
-
+  
   useEffect(() => {
     fetchDataAndHandleChange();
   }, [pathname, onDataChange]);
   
+  //console.log("1")
+  //console.log(characters)
+  //PAGINADO
+   const [pagina, setPagina] = useState(1)
+   const [porPagina, setPorPagina] = useState(5)
+   const maximo = Math.ceil(characters.length / porPagina)
+
   const onSearchId = async (id) => {
   function getRandomId() {
     const numeroDecimal = Math.random();
@@ -84,7 +94,7 @@ const onSearchName = async (name) => {
 try {
     if(!name) return alert('Ingrese un Nombre')
     if(characters.find(char => char.name == name)) return alert('Ya existe un personaje con el Nombre: ' + name)
-
+    
 const { data } = await axios.get(`${URL}/name?name=${name}`)
 if(data && data.name){ // REVISAR ESTA LINEA DATA.NAME
 setCharacters([data,...characters])
@@ -96,13 +106,16 @@ console.log(error.message)
 alert('No se encontró personaje con ese nombre. Introduzca un nombre válido')
 }     
 }
+//console.log("2")
+//console.log(characters)
   return (
     <>
       <div className='App'>
          <div className='NavBar'>{ pathname !== '/' && <Nav onSearchId={onSearchId} onSearchName={onSearchName}/>}</div> 
           <Routes>
             <Route path='/' element={<Landing onDataChange={onDataChange}/>} /> 
-            <Route path='/pokemons' element={<Cards characters={characters} />} />
+            {/* <Route path='/pokemons' element={<Cards characters={characters} />} /> */}
+            <Route path='/pokemons' element={<Pages pagina={pagina} porPagina={porPagina} setPagina={setPagina} maximo={maximo} characters={characters} />} />
             <Route path='/detail/:id' element={<Detail/>} />
             <Route path='/new/' element={<Form onDataChange={onDataChange}/>} />
           </Routes>
@@ -113,3 +126,5 @@ alert('No se encontró personaje con ese nombre. Introduzca un nombre válido')
 }
 
 export default App
+
+//pagina={pagina} porPagina={porPagina} setPagina={setPagina} maximo={maximo}

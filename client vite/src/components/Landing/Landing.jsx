@@ -12,7 +12,7 @@ function Landing({ onDataChange }) { // {setCharacters}, onStartClick
         // Perform any other actions needed before navigating
         // ...
        
-        alert("Welcome to pokemon App!")
+        //alert("Welcome to pokemon App!")
         try {
             const reset = await axios.delete(`${URL}`);
             console.log(reset.data); // Log the response for debugging
