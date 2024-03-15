@@ -79,6 +79,7 @@ function Detail() {
 
     return (
         <div className={style.container}>
+            <h2>id: {character.id}</h2>
             <h2>Name: {character.name}</h2>
             <h4>Height: {character.height}</h4>
             <h4>Weight: {character.weight}</h4>

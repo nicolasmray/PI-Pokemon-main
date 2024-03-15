@@ -3,10 +3,17 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import style from './Landing.module.css'
 
+//FILTROS:
+//import { useSelector, useDispatch } from 'react-redux'
+//import { resetCharacters } from '../../redux/actions.js'
+
 function Landing({ onDataChange }) { // {setCharacters}, onStartClick
 
     const navigate = useNavigate();
     const URL = 'http://localhost:3001/resetpokemons/'
+    
+    //FILTROS:
+   // const dispatch = useDispatch();
 
     const handleStartClick = async () => {
         // Perform any other actions needed before navigating
@@ -20,7 +27,11 @@ function Landing({ onDataChange }) { // {setCharacters}, onStartClick
             //setCharacters([])
             //onUpdateCharacters([])
             //onStartClick()
-            onDataChange([])
+
+            //FILTROS:
+            //dispatch(resetCharacters())
+
+            //onDataChange([]) //--- LO SAQUE VIENDO LO DEL RESET PORQUE ME PARECIO QUE NO IBA!! AGREGAR SI HACE FALTA!!
           } catch (error) {
             console.error('Error resetting Pokemon database:', error);
           }

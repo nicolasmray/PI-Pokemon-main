@@ -2,14 +2,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import SearchBar from '../SearchBar/SearchBar'
 import style from './Nav.module.css'
 
+//FILTROS:
+import { useSelector, useDispatch } from 'react-redux'
+import { resetCharacters } from '../../redux/actions.js'
 
-
-function Nav({onSearchId, onSearchName}){
+function Nav({onSearchId, onSearchName, setIsDataLoaded}){
     const navigate = useNavigate()
+     //FILTROS:
+     const dispatch = useDispatch();
 
       const handleLandingClick = () => {
         // Navigate to the landing page
         //onDataChange([])
+
+        //FILTROS:
+        setIsDataLoaded(false)
+        //dispatch(resetCharacters())
         navigate('/')
       }
       const handleFormClick = () => {
