@@ -32,3 +32,14 @@
     font-size: 12px;
     color: black; /* Color of the message */
   }
+
+  .sorterContainer {
+    color:black;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+    width:100%;
+   padding-top: 3%;
+
+}

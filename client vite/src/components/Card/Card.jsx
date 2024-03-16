@@ -23,9 +23,9 @@ function Card({id, name, height, weight, image, hp, attack, defense, speed, type
          {/* <h2>Height: {height}</h2>
          <h2>Weight: {weight}</h2> */}
          <img src={image} alt={name} className={style.image} />
-         {/* <h2>HP: {hp}</h2>
+         {/* <h2>HP: {hp}</h2> */}
          <h2>Attack: {attack}</h2>
-         <h2>Defense: {defense}</h2>
+         {/*<h2>Defense: {defense}</h2>
          <h2>Speed: {speed}</h2> */}
          <h2>Types: {formattedTypes}</h2>
           

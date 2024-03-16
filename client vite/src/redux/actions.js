@@ -1,4 +1,4 @@
-import { FETCH_CHARACTERS, ADD_CHARACTER, RESET_CHARACTERS, FILTER_TYPE, FILTER_API, ORDER_ALPHABET, ORDER_ATTACK, ERROR } from "./actionTypes";
+import { FETCH_CHARACTERS, ADD_CHARACTER, RESET_CHARACTERS, FILTER_TYPE, FILTER_API, ORDER_ALPHABET, ORDER_ATTACK, ORDER_CANCEL, ERROR } from "./actionTypes";
 import axios from "axios"
 
 export const fetchCharacters = (characters) => {
@@ -21,17 +21,17 @@ export const resetCharacters = () => {
     }
 }
 
-export const filterCardsType = (types) => {
+export const filterCardsType = (characters) => {
     return {
         type: FILTER_TYPE,
-        payload:types
+        payload:characters
     }
 }
 
-export const filterCardsApi = (id) => {
+export const filterCardsApi = (characters) => {
     return {
         type: FILTER_API,
-        payload:id
+        payload:characters
     }
 }
 
@@ -46,6 +46,13 @@ export const orderCardsAttack = (ordenAtaque) => {
     return {
         type: ORDER_ATTACK,
         payload:ordenAtaque
+    }
+}
+
+export const orderCardsCancel = (ordenCancel) => {
+    return {
+        type: ORDER_CANCEL,
+        payload:ordenCancel
     }
 }
 
