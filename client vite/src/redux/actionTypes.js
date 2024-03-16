@@ -4,6 +4,7 @@ export const RESET_CHARACTERS = 'RESET_CHARACTERS';
 
 export const FILTER_TYPE = 'FILTER_TYPE';
 export const FILTER_API = 'FILTER_API';
+export const FILTER_RESET = 'FILTER_RESET';
 export const ORDER_ALPHABET = 'ORDER_ALPHABET';
 export const ORDER_ATTACK = 'ORDER_ATTACK ';
 export const ORDER_CANCEL = 'ORDER_CANCEL ';

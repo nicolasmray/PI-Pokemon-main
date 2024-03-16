@@ -1,4 +1,4 @@
-import { FETCH_CHARACTERS, ADD_CHARACTER, RESET_CHARACTERS, FILTER_TYPE, FILTER_API, ORDER_ALPHABET, ORDER_ATTACK, ORDER_CANCEL, ERROR } from "./actionTypes";
+import { FETCH_CHARACTERS, ADD_CHARACTER, RESET_CHARACTERS, FILTER_TYPE, FILTER_API, FILTER_RESET, ORDER_ALPHABET, ORDER_ATTACK, ORDER_CANCEL, ERROR } from "./actionTypes";
 import axios from "axios"
 
 export const fetchCharacters = (characters) => {
@@ -32,6 +32,13 @@ export const filterCardsApi = (characters) => {
     return {
         type: FILTER_API,
         payload:characters
+    }
+}
+
+export const filterReset = () => {
+    return {
+        type: FILTER_RESET,
+        //payload:characters
     }
 }
 

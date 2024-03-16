@@ -1,6 +1,6 @@
  import React, { useState } from 'react';
  import { useSelector, useDispatch } from 'react-redux';
- import { FILTER_TYPE, FILTER_API, ORDER_ALPHABET, ORDER_ATTACK, ORDER_CANCEL } from '../../redux/actionTypes';
+ import { FILTER_TYPE, FILTER_API, FILTER_RESET, ORDER_ALPHABET, ORDER_ATTACK, ORDER_CANCEL } from '../../redux/actionTypes';
  import Card from '../Card/Card';
  import style from './Pages.module.css'
 
@@ -65,7 +65,7 @@ const onKeyDown = (e) => {
     //FILTER:
     const [selectedOrigin, setSelectedOrigin] = useState("All"); // FILTRO ORIGEN
     const [selectedTypes, setSelectedTypes] = useState([]); 
-    const typesArray = ['Grass', 'Fire', 'Water', 'Electric', 'Psychic', 'Dark', 'Flying', 'Rock', 'Ground', 'Dragon', 'Ice', 'Bug', 'Poison', 'Fairy', 'Steel', 'Ghost'];
+    const typesArray = ['grass', 'fire', 'water', 'electric', 'normal', 'psychic', 'dark', 'flying', 'rock', 'ground', 'dragon', 'ice', 'bug', 'poison', 'fairy', 'steel', 'ghost'];
     
     const handleTypeFilter = () => {
         // Enviar acción de filtrado al reducer
@@ -84,6 +84,13 @@ const onKeyDown = (e) => {
         dispatch({
             type: FILTER_API,
             payload: selectedOrigin
+        });
+    };
+
+    const handleResetFilter = () => {
+        dispatch({
+            type: FILTER_RESET,
+            //payload: selectedOrigin
         });
     };
 
@@ -115,7 +122,11 @@ const onKeyDown = (e) => {
                         <option value="DB">DB</option>
                 </select>
                 <button onClick={handleOriginFilter}>Aplicar Filtro</button>
+            <div>
+                <button onClick={handleResetFilter}>Desactivar Filtros</button>
             </div>
+            </div>
+            
 
         </div>
           {filteredPokemonList.slice((pagina -1)* porPagina, (pagina - 1)* porPagina + porPagina).map(char => (
