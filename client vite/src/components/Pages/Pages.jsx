@@ -1,5 +1,6 @@
- import React, { useState } from 'react';
+ import React, { useState,useEffect } from 'react';
  import { useSelector, useDispatch } from 'react-redux';
+ import axios from 'axios';
  import { FILTER_TYPE, FILTER_API, FILTER_RESET, ORDER_ALPHABET, ORDER_ATTACK, ORDER_CANCEL } from '../../redux/actionTypes';
  import Card from '../Card/Card';
  import style from './Pages.module.css'
@@ -61,12 +62,34 @@ const onKeyDown = (e) => {
 
     };
 
-
+    
     //FILTER:
     const [selectedOrigin, setSelectedOrigin] = useState("All"); // FILTRO ORIGEN
     const [selectedTypes, setSelectedTypes] = useState([]); 
-    const typesArray = ['grass', 'fire', 'water', 'electric', 'normal', 'psychic', 'dark', 'flying', 'rock', 'ground', 'dragon', 'ice', 'bug', 'poison', 'fairy', 'steel', 'ghost'];
+    const [typesArray, setTypesArray] = useState([]);
+    //const typesArray = typesForFilter//['grass', 'fire', 'water', 'electric', 'normal', 'psychic', 'dark', 'flying', 'rock', 'ground', 'dragon', 'ice', 'bug', 'poison', 'fairy', 'steel', 'ghost'];
     
+    // OBTENER TIPOS DE POKEMON
+
+    useEffect(() => {
+        // Fetch types data when component mounts
+        fetchTypes();
+    }, []);
+
+    const fetchTypes = async () => {
+        try {
+            const response = await axios.get('http://localhost:3001/types/');
+            // Assuming the response.data contains the types
+            const typesForFilter = response.data.types;
+            console.log(typesForFilter); // Display the types in the console
+            //return typesForFilter
+            setTypesArray(typesForFilter);
+        } catch (error) {
+            console.error('Error fetching types:', error);
+        }
+    };
+    //<<<<<
+
     const handleTypeFilter = () => {
         // Enviar acción de filtrado al reducer
         dispatch({ type: FILTER_TYPE, payload: selectedTypes });
