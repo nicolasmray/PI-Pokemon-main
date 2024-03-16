@@ -63,6 +63,7 @@ const onKeyDown = (e) => {
 
 
     //FILTER:
+    const [selectedOrigin, setSelectedOrigin] = useState("All"); // FILTRO ORIGEN
     const [selectedTypes, setSelectedTypes] = useState([]); 
     const typesArray = ['Grass', 'Fire', 'Water', 'Electric', 'Psychic', 'Dark', 'Flying', 'Rock', 'Ground', 'Dragon', 'Ice', 'Bug', 'Poison', 'Fairy', 'Steel', 'Ghost'];
     
@@ -75,13 +76,15 @@ const onKeyDown = (e) => {
         setSelectedTypes(Array.from(e.target.selectedOptions, (option) => option.value));
     };
     
-    const handleOriginFilter = () => {
-        // Enviar acción de filtrado al reducer
-        //dispatch({ type: FILTER_TYPE, payload: selectedOrigin });
+    const handleOriginChange = (event) => {
+        setSelectedOrigin(event.target.value);
     };
 
-    const handleOriginChange = (e) => {
-        //setSelectedTypes(Array.from(e.target.selectedOptions, (option) => option.value));
+    const handleOriginFilter = () => {
+        dispatch({
+            type: FILTER_API,
+            payload: selectedOrigin
+        });
     };
 
     return (
@@ -106,7 +109,7 @@ const onKeyDown = (e) => {
             </div>
             <div>
                 <h2>Filtrar por Origen</h2>
-                <select multiple={false} onChange={handleOriginChange} defaultValue="All">
+                <select multiple={false} onChange={handleOriginChange} value={selectedOrigin}>
                         <option value="All">All</option>
                         <option value="API">API</option>
                         <option value="DB">DB</option>
@@ -115,7 +118,7 @@ const onKeyDown = (e) => {
             </div>
 
         </div>
-          {orderedPokemonList.slice((pagina -1)* porPagina, (pagina - 1)* porPagina + porPagina).map(char => (
+          {filteredPokemonList.slice((pagina -1)* porPagina, (pagina - 1)* porPagina + porPagina).map(char => (
              <Card 
                 //key={char.id} //-- APAGUE LA KEY!! VOLVER ACTIVAR SI NECESARIO
                 id={char.id}

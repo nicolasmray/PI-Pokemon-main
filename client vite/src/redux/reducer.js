@@ -35,10 +35,20 @@ function reducer(state = initialState, { type, payload }){
                         filteredPokemonList: typeFilteredCharacters,
                     }
                 case FILTER_API: //tengo que recibir de payload characters y mapearlo con la condicion "si el character.id length" es mayor a 10. en caso que si que me los guarde en un objeto y que ese objeto sea mi nuevo estado filtered pokemon list
-                    const filteredCharacters = [...state.pokemonList].filter(character => character.id.length > 10);
+                    let filteredCharacters;
+                    if (payload === "API") {
+                        filteredCharacters = state.pokemonList.filter(character => character.id.toString().length <= 10);
+                    } else if (payload === "DB") {
+                        filteredCharacters = state.pokemonList.filter(character => character.id.toString().length > 10);
+                    } else {
+                        // Si el payload no es "API" ni "DB", no se aplica ningún filtro
+                        filteredCharacters = state.pokemonList;
+                    }
                     return {
                         ...state,
-                        filteredPokemonList: filteredCharacters,
+                        //pokemonList: state.pokemonList,
+                        filteredPokemonList: filteredCharacters, 
+                        //orderedPokemonList: state.orderedPokemonList,
                     }
                 case ORDER_ALPHABET:
                     const orderedCharacter = [...state.filteredPokemonList].sort((a, b) => {
@@ -48,6 +58,8 @@ function reducer(state = initialState, { type, payload }){
                     return {
                         ...state,
                         orderedPokemonList: orderedCharacter,
+                        filteredPokemonList: orderedCharacter,
+                        //filteredPokemonList: state.orderedCharacter,
                     }
                 case ORDER_ATTACK:
                     const orderedAttackCharacter = [...state.filteredPokemonList].sort((a, b) => {
@@ -57,6 +69,8 @@ function reducer(state = initialState, { type, payload }){
                     return {
                         ...state,
                         orderedPokemonList: orderedAttackCharacter,
+                        filteredPokemonList: orderedAttackCharacter,
+                        //filteredPokemonList: state.orderedCharacter,
                     };
                 case ORDER_CANCEL:
                     const cancelOrdered = [...state.filteredPokemonList].sort((a, b) => {
@@ -78,44 +92,3 @@ function reducer(state = initialState, { type, payload }){
     }
 
 export default reducer
-
-// -----------------------------------------------------------------------------------------------------------
-// import { FILTER_POKEMON, ORDER_POKEMON } from "./actionTypes";
-
-// const initialState = {
-//     pokemonList: [],
-//     filteredPokemonList: [],
-//     orderedPokemonList: [],
-//   };
-
-// const reducer = (state = initialState, action) => {
-//     switch (action.type) {
-//       case FILTER_POKEMON:
-//         const filteredList = state.pokemonList.filter(pokemon => {
-//           // Assuming action.payload.ids is an array of integers representing the IDs to filter
-//           return action.payload.ids.includes(pokemon.id);
-//         });
-//         return {
-//           ...state,
-//           filteredPokemonList: filteredList,
-//         };
-//       case ORDER_POKEMON:
-//         // Assuming action.payload.field is a string representing the field to order by
-//         const orderedList = state.pokemonList.slice().sort((a, b) => {
-//           if (a[action.payload.field] < b[action.payload.field]) {
-//             return -1;
-//           }
-//           if (a[action.payload.field] > b[action.payload.field]) {
-//             return 1;
-//           }
-//           return 0;
-//         });
-//         return {
-//           ...state,
-//           orderedPokemonList: orderedList,
-//         };
-//       default:
-//         return state;
-//     }
-//   };
-//   export default reducer
