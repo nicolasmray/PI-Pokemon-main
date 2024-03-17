@@ -2,76 +2,39 @@ import { useState } from "react";
 import style from './SearchBar.module.css'
 
 export default function SearchBar(props) {
-   //const [id, setId] = useState('')
    const [name, setName] = useState('')
-   //const [inputValue, setInputValue] = useState('');
-   const [searchType, setSearchType] = useState('name')
-
-//    const handleChange = (event) => {
-//       setInputValue(event.target.value);
-//     };
-  
-//     const handleTypeChange = (event) => {
-//       setSearchType(event.target.value);
-//     };
-  
-//     const handleSearch = () => {
-//       if (searchType === 'id') {
-//         props.onSearchId(inputValue);
-//       } else if (searchType === 'name') {
-//         props.onSearchName(inputValue);
-//       }
-//       setInputValue('');
-//     };
-  
-//     const handleRandomCharacter = () => {
-//       props.onSearchId('Agregar personaje Aleatorio');
-//       setInputValue('');
-//     };
-  
-//     return (
-//       <div className={style.container}>
-//         <input
-//           type='search'
-//           onChange={handleChange}
-//           placeholder="Insert ID/Name"
-//           value={inputValue}
-//           className={style.searchBar}
-//         />
-//          <select
-//           onChange={handleTypeChange}
-//           value={searchType}
-//           className={style.searchTypeDropdown}
-//         >
-//           <option value="id">ID</option>
-//           <option value="name">Name</option>
-//         </select> 
-//         <button onClick={handleSearch} className={style.searchButton}>
-//           Search
-//         </button>
-//          <button onClick={handleRandomCharacter} className={style.addRandomButton}>
-//           Add Random Character
-//         </button> 
-//       </div>
-//     );
-//   }
+   // const [searchType, setSearchType] = useState('name')
+   const [isValid, setIsValid] = useState(true);
+   const [errorMessage, setErrorMessage] = useState('');
 
    function handleChange(evento){
-      setName(evento.target.value)
+      const newName = evento.target.value;
+      //if (!regexCharacteristic.test(data.height)) errors.height = 'Only numbers from 1 to 999 accepted';
+      const regex = /^[a-zA-Z]{0,30}$/; // Allows letters only, up to 30 characters
+      const isValidInput = regex.test(newName);
+      //if (!regex.test(newName)) return error('Only letters accepted')
+      setIsValid(isValidInput); // Update the validity state
+      setErrorMessage('');
+      if (isValidInput) {
+         setName(newName); // Update the state with the new name if it's valid
+         setErrorMessage('Only letters accepted, maximum 30 characters')
+      }else {
+         setErrorMessage('Only letters accepted, maximum 30 characters'); // Show error message if input is invalid
+      }
    }
 
-   const searchId = () => {
-      props.onSearchId(id)
-      setId('')
-   }
+   // const searchId = () => {
+   //    props.onSearchId(id)
+   //    setId('')
+   // }
    const searchName = () => {
       props.onSearchName(name)
       setName('')
    }
-   const RandomCharacter = () => {
-    props.onSearchId('Agregar personaje Aleatorio')
-    setId('')
- }
+//    const RandomCharacter = () => {
+//     props.onSearchId('Agregar personaje Aleatorio')
+//     setId('')
+//  }
    const handleTypeChange = (event) => {
     setSearchType(event.target.value);
   };
@@ -84,7 +47,7 @@ export default function SearchBar(props) {
             <option value="id">ID</option>
             <option value="name">Name</option>
         </select> */}
-         <button onClick={searchName} className={style.searchButton} >Search</button>
+         <button onClick={searchName} className={style.searchButton} disabled={!isValid} >Search</button>
          {/* <button onClick={RandomCharacter} className={style.addRandomButton} >Add Random Character</button> */}
       </div>
    );
