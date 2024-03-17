@@ -26,6 +26,11 @@
  color:lightgray;
  margin:10%;
 }
+.submitButton:disabled {
+   /* Estilos cuando está deshabilitado */
+   background-color: red; 
+   color: #666666; 
+ }
 
 .email {
  background-color: lightgray;
@@ -48,3 +53,19 @@
 .guest {
  text-align: center;
 }
+
+
+.errorHeight {
+   background-color: lightcoral;
+   color:blanchedalmond;
+  }
+
+  .errorWeight {
+   background-color: lightcoral;
+   color:blanchedalmond;
+  }
+
+  .errorSpeed {
+   background-color: lightcoral;
+   color:blanchedalmond;
+  }

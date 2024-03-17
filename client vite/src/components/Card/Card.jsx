@@ -30,7 +30,7 @@ function Card({id, name, height, weight, image, hp, attack, defense, speed, type
          <h2>Types: {formattedTypes}</h2>
           
       </div>
-   );
+   ); 
 }
 
 

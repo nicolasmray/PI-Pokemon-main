@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
 import validation from "./validation.js"
 import style from './Form.module.css'
@@ -28,21 +28,99 @@ function Form({data, onDataChange }) {
     //     onDataChange && onDataChange({ ...userData, [evento.target.name]: evento.target.value })
     // }
 
-    const handleChange = (evento) => {
-        if (evento.target.name === 'types') { //le agregue el pokemon
-          // Split the input string into an array of types
-          setUserData({ ...userData, [evento.target.name]: evento.target.value.split(', ') });
-        } else {
-          setUserData({ ...userData, [evento.target.name]: evento.target.value });
+    const [selectedTypes, setSelectedTypes] = useState([]); 
+    const [typesArray, setTypesArray] = useState([]);
+    const [isFormValid, setIsFormValid] = useState(false);
+
+    useEffect(() => {
+      const errorsArray = Object.values(errors);
+      setIsFormValid(userData.name && userData.height && userData.weight && userData.image && userData.hp && userData.attack && userData.defense && userData.speed && selectedTypes.length > 0 && errorsArray.every(error => !error));
+    }, [userData, errors, selectedTypes]);
+    //const typesArray = typesForFilter//['grass', 'fire', 'water', 'electric', 'normal', 'psychic', 'dark', 'flying', 'rock', 'ground', 'dragon', 'ice', 'bug', 'poison', 'fairy', 'steel', 'ghost'];
+    
+    // OBTENER TIPOS DE POKEMON
+
+    useEffect(() => {
+        // Fetch types data when component mounts
+        fetchTypes();
+    }, []);
+
+    const fetchTypes = async () => {
+        try {
+            const response = await axios.get('http://localhost:3001/types/');
+            // Assuming the response.data contains the types
+            const typesForFilter = response.data.types;
+            console.log(typesForFilter); // Display the types in the console
+            //return typesForFilter
+            setTypesArray(typesForFilter);
+        } catch (error) {
+            console.error('Error fetching types:', error);
         }
-        setErrors(validation({ ...userData, [evento.target.name]: evento.target.value }));
-      };
+    };
+    const selectionDisplay = selectedTypes.join(", ")
+    //<<<<<
+
+    // const handleTypeFilter = () => {
+    //     // Enviar acción de filtrado al reducer
+    //     dispatch({ type: FILTER_TYPE, payload: selectedTypes });
+    // };
+
+    const handleTypeChange = (e) => {
+        //setSelectedTypes(Array.from(e.target.selectedOptions, (option) => option.value));
+        const selectedValues = Array.from(e.target.selectedOptions, (option) => option.value);
+        setSelectedTypes(selectedValues);
+    };
+
+    // const handleChange = (evento) => {
+    //     if (evento.target.name === 'types') { //le agregue el pokemon
+    //       // Split the input string into an array of types
+    //       setUserData({ ...userData, [evento.target.name]: evento.target.value.split(', ') });
+    //     } else {
+    //       const value = evento.target.name === 'name' ? evento.target.value.toLowerCase() : evento.target.value;
+    //       setUserData({ ...userData, [evento.target.name]: evento.target.value });
+    //     }
+    //     setErrors(validation({ ...userData, [evento.target.name]: evento.target.value }));
+    //   };
+
+    const handleChange = (evento) => {
+      const fieldName = evento.target.name;
+      let fieldValue = evento.target.value;
+    
+      // Convert name to lowercase if it's the 'name' field
+      if (fieldName === 'name') {
+        fieldValue = fieldValue.toLowerCase();
+      } else if (fieldName === 'image') {
+        // For 'image' field, no need to parse to integer
+      } else {
+        // Parse numeric fields to numbers
+        fieldValue = parseInt(fieldValue, 10); // Assuming base 10 for integers
+      }
+    
+      // Validate the current field separately
+      const fieldErrors = validation({ [fieldName]: fieldValue });
+    
+      // Update the error state for the current field only
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        [fieldName]: fieldErrors[fieldName] || '', // Clear the error if validation passes
+      }));
+    
+      // Update the user data state
+      setUserData((prevUserData) => ({
+        ...prevUserData,
+        [fieldName]: fieldValue,
+      }));
+    };
+    
 
     const handleSubmit = async (evento) => {
       evento.preventDefault()
       try {
         // Make a POST request to your back-end endpoint
-        const response = await axios.post('http://localhost:3001/pokemons/', userData);
+        const response = await axios.post('http://localhost:3001/pokemons/', {
+           ...userData,
+          types: selectedTypes,
+        });
         
         // Handle the response accordingly
         console.log(response.data); // You may want to handle this response in a different way based on your requirements
@@ -50,6 +128,23 @@ function Form({data, onDataChange }) {
         if (response.data.created === true) {
             alert('Pokemon added successfully!');
             onDataChange && onDataChange(response.data.pokemon); // Call the callback function to update state
+            setUserData({
+              name: '',
+              height: '',
+              weight: '',
+              image: '',
+              hp: '',
+              attack: '',
+              defense: '',
+              speed: '',
+              types: []
+            });
+    
+            // Clear the errors state
+            setErrors({});
+            setSelectedTypes([]);
+
+            
           } else if (response.data.created === false) {
             alert('El pokemon ya existe en la base de datos!');
           }
@@ -78,13 +173,13 @@ function Form({data, onDataChange }) {
         <br/>
         <label htmlFor="height">
         Height: 
-           <input type="number" placeholder="Insert Height" id="height" name="height" value={userData.height} onChange={handleChange} className={errors.height ? style.error : style.characteristic}/>
+           <input type="number" placeholder="Insert Height" id="height" name="height" value={userData.height} onChange={handleChange} className={errors.height ? style.errorHeight : style.characteristic}/>
         </label>
         { errors.height && <p>{errors.height}</p> }
         <br/>
         <label htmlFor="weight">
         Weight: 
-           <input type="number" placeholder="Insert Weight" id="weight" name="weight" value={userData.weight} onChange={handleChange} className={errors.weight ? style.error : style.characteristic}/>
+           <input type="number" placeholder="Insert Weight" id="weight" name="weight" value={userData.weight} onChange={handleChange} className={errors.weight ? style.errorWeight : style.characteristic}/>
         </label>
         { errors.weight && <p>{errors.weight}</p> }
         <br/>
@@ -114,18 +209,23 @@ function Form({data, onDataChange }) {
         <br/>
         <label htmlFor="speed">
         Speed: 
-           <input type="number" placeholder="Insert Speed" id="speed" name="speed" value={userData.speed} onChange={handleChange} className={errors.speed ? style.error : style.characteristic}/>
+           <input type="number" placeholder="Insert Speed" id="speed" name="speed" value={userData.speed} onChange={handleChange} className={errors.speed ? style.errorSpeed : style.characteristic}/>
         </label>
         { errors.speed && <p>{errors.speed}</p> }
         <br/>
-        <label htmlFor="types">
-        Types: 
-            <textarea  placeholder="Insert Types (comma-separated)" id="types" name="types" value={userData.types.join(', ')} onChange={handleChange} className={errors.types ? style.error : style.characteristic}/>
-        </label>
-        { errors.types && <p>{errors.types}</p> }
+        <div>
+                <h4>Select Types:</h4>
+                <select multiple={true} onChange={handleTypeChange} value={selectedTypes}>
+                    {typesArray.map((type) => (
+                        <option key={type} value={type}>{type}</option>
+                    ))}
+                </select>
+                <h4>Selection:</h4>
+                <h4>{selectionDisplay}</h4>
+            </div>
         <br/>
 
-        <button className={style.submitButton}type='submit'>Submit</button>
+        <button className={style.submitButton}type='submit' disabled={!isFormValid} >Submit</button>
     </form>
     
   </div>

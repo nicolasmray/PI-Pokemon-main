@@ -1,6 +1,7 @@
 const axios = require('axios');
 const { Pokemons } = require('../db')
 const URL_NAME = "https://pokeapi.co/api/v2/pokemon/" 
+const DEFAULT_IMAGE_URL = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png"
 
 const getCharByName = async (req, res) => {
     try {
@@ -21,7 +22,7 @@ const getCharByName = async (req, res) => {
                 name,
                 height,
                 weight,
-                image,
+                image: image || DEFAULT_IMAGE_URL,
                 hp,
                 attack,
                 defense,
@@ -43,7 +44,7 @@ const getCharByName = async (req, res) => {
             name, 
             height, 
             weight, 
-            image: sprites.other.dream_world.front_default, 
+            image: sprites.other.dream_world.front_default || DEFAULT_IMAGE_URL, 
             hp: stats[0].base_stat, 
             attack: stats[1].base_stat, 
             defense: stats[2].base_stat, 

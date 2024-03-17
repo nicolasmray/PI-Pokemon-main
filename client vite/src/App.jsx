@@ -216,7 +216,7 @@ function App() {
   //console.log(characters)
   //PAGINADO
    const [pagina, setPagina] = useState(1)
-   const [porPagina, setPorPagina] = useState(3)
+   const [porPagina, setPorPagina] = useState(12)
    //const maximo = Math.ceil(characters.length / porPagina)
    const filteredPokemonList = useSelector(state => state.filteredPokemonList);
    const maximo = Math.ceil(filteredPokemonList.length / porPagina)
