@@ -1,17 +1,57 @@
-.searchButton {
-    color:gray;
-    background-color: rgb(244, 244, 175);
-}
+/* .searchButton {
+    color:rgb(34,34,36);
+    background-color: rgb(255,0,0);
+    border: 10px;
+    border-color: black;
+    border-radius: 50%;
+    padding-bottom: 10px;
+} */
 
-.addRandomButton {
-    color:gray;
-    background-color: rgb(244, 244, 175);
+.container {
+    position: relative;
+    height: 100px; /* Adjust height as needed */
+    display: flex;
+    align-items: stretch;
+    border-left-color: white;
+    border-right-color: white;
+    border-top:  rgb(204,0,0);
+    border-bottom: rgb(204,0,0);
+    border-width: 3px;
+    border-style:solid;
 }
 
 .searchBar {
-    background-color: rgb(238, 238, 199);
-    height: 90%;
+    color:white !important;
+    font-size: 20px;
+    background-color: rgb(204,0,0);
+    height: 100%;
+    width: 180px;
     border: 0;
-
+    flex: 1;
+    border-left-color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     
 } 
+
+.searchBar::placeholder {
+    color: white; /* Placeholder text color when input is enabled */
+    font-size: 16px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.searchButton {
+    color:white;
+    border-color: rgb(204,0,0);
+    background-color: rgb(204,0,0);
+    border-radius: 0; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   
+   }
+ 
+   .searchButton:hover {
+    filter: grayscale(30%);
+    border-color: rgb(238,21,21);
+    background-color: rgb(238,21,21);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   }

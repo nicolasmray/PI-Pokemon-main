@@ -1,23 +1,110 @@
 .outterContainer {
     width: 100%;
-    margin-top: 0.3%;
+    margin-top: 0%;
     display: flexbox;
     justify-content: center;
-    background-color: rgb(244, 244, 175);
+    background-color: rgb(204,0,0);
     position: fixed;
+    font-size: 38px;
 }
+/* rgb(238,21,21); */
 
 .innerContainer {
-    width: 50%;
+    width: 100%;
     display:flex;
     justify-content: space-between;
     margin: 0%;
-    background-color: rgb(244, 244, 175);
+    background-color: rgb(204,0,0);
+
+    align-items: center;
 }
 
+  .landingButton {
+    color:white;
+    border-color: rgb(204,0,0);
+    background-color: rgb(204,0,0);
+    border-radius: 0;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 18px;
+    
+    margin-left: auto;
+}
 
-.button {
-    color:gray;
-    border-color: rgb(244, 244, 175);
-    background-color: rgb(214, 219, 185);
+/* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+
+.landingButton:hover {
+    filter: grayscale(30%);
+    border-color: rgb(204,0,0);
+    background-color: rgb(204,0,0);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+  
+  .landingButton:hover::after {
+    content: '  WARNING: ¡App will reset if clicked! '; /* Text to display */ /* Position the text absolutely */
+    bottom: -30px; /* Position the text below the button */
+    left: 50%; /* Position the text horizontally in the middle */
+    transform: translateX(-50%); /* Center the text horizontally */
+    color: rgb(34,34,36); /* Text color */
+    background-color: rgb(255,222,0);
+    font-size: 16px; /* Font size */
+    font-weight: bold; /* Font weight */
+    visibility: visible; /* Show the text */
+  }
+  
+  .landingButton::after {
+    content: ''; /* Empty content for the pseudo-element */ /* Position the pseudo-element absolutely */
+    bottom: -30px; /* Position the pseudo-element below the button */
+    left: 50%; /* Position the pseudo-element horizontally in the middle */
+    transform: translateX(-50%); /* Center the pseudo-element horizontally */
+    width: 100%; /* Full width */
+    height: 85px; /* Height of the area to trigger hover */
+    visibility: hidden; /* Hide the pseudo-element by default */
+    background-color: white;
+  }
+
+
+  .formButton {
+    color:white;
+    border-color: rgb(204,0,0);
+    background-color: rgb(204,0,0);
+    border-radius: 0; 
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.formButton:hover {
+    filter: grayscale(30%);
+    border-color: rgb(238,21,21);
+    background-color: rgb(238,21,21);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .homeButton {
+    background-image: url("https://seeklogo.com/images/P/pokeball-logo-DC23868CA1-seeklogo.com.png");
+    background-size: cover; /* or contain, etc. */
+   background-position: center;
+   background-repeat: no-repeat;
+   border-radius:50%;
+   
+   /* Set other button styles */
+   width: 100px;
+   height: 100px;
+   border: none;
+ 
+   color: black; /* Change text color */
+   font-size: 18px; /* Change text size */
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+   font-weight: bold;
+   text-shadow: 0px 2px 2px gray;
+   text-align: center; /* Align text to center */
+   line-height: 24px; /* Adjust line height */
+   padding-top: 55px;
+   }
+ 
+   .homeButton:hover {
+    filter: brightness(120%);/* Apply grayscale filter on hover */
+    border-color:white;
+    background-color: white;
+    color: rgb(34,34,36);
 }

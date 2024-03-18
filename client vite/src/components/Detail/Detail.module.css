@@ -1,8 +1,30 @@
 .container {
     background-color: lightgrey;
     text-align: center;
+    height: 1200px;
+    width: 207vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
-    margin-left: 20%;
-    margin-right: 20%;
-    padding: 5%;
+.img {
+    width: 300px; /* Set the width of the image */
+    height: 300px; /* Set the height of the image */
+}
+
+.statsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; /* Adjust as needed */
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.stat {
+    width: calc(33.33% - 20px); /* Adjust width based on the number of columns */
+    margin: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

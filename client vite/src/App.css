@@ -1,10 +1,13 @@
-#root {
+/* #root {
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
-}
-
+  background-color: rgb(204,0,0);
+ 
+} */
+/* background-color: rgb(204,0,0); */
+/* 
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +42,42 @@
 
 .read-the-docs {
   color: #888;
+} */
+
+/* Apply global styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Style the root container of the entire application */
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh; /* Ensure the app takes up at least the full viewport height */
+  background-color: #f0f0f0; /* Set a background color for the entire app */
+}
+
+/* Style the main content area of the application */
+.main-content {
+  max-width: 800px; /* Limit the width of the main content */
+  width: 100%; /* Ensure the main content takes up the full width */
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #ffffff; /* Set a background color for the main content */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow effect */
+}
+
+/* Apply specific styles to links */
+a {
+  color: #007bff; /* Set the color of links */
+  text-decoration: none; /* Remove the default underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Add underline on hover */
 }

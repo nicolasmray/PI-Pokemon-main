@@ -8,7 +8,7 @@ export default function SearchBar(props) {
    const [errorMessage, setErrorMessage] = useState('');
 
    function handleChange(evento){
-      const newName = evento.target.value;
+      const newName = evento.target.value.toLowerCase();
       //if (!regexCharacteristic.test(data.height)) errors.height = 'Only numbers from 1 to 999 accepted';
       const regex = /^[a-zA-Z]{0,30}$/; // Allows letters only, up to 30 characters
       const isValidInput = regex.test(newName);
@@ -42,12 +42,12 @@ export default function SearchBar(props) {
 
    return (
       <div className={style.container}>
-         <input type='search' onChange={handleChange} placeholder="Insert Name" value={name} className={style.searchBar} />
+         <input type='search' onChange={handleChange} placeholder="Search Pokémon..." value={name} className={style.searchBar} style={{ color: 'white' }} /> 
          {/* <select onChange={handleTypeChange} value={searchType} className={style.searchTypeDropdown}>
             <option value="id">ID</option>
             <option value="name">Name</option>
         </select> */}
-         <button onClick={searchName} className={style.searchButton} disabled={!isValid} >Search</button>
+         <button onClick={searchName} className={style.searchButton} disabled={!isValid} >Go!</button>
          {/* <button onClick={RandomCharacter} className={style.addRandomButton} >Add Random Character</button> */}
       </div>
    );

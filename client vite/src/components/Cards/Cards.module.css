@@ -1,10 +1,9 @@
 .container {
-    color:red;
+    color: red;
     display: flex;
     justify-content: center;
     text-align: center;
     flex-wrap: wrap;
-    width:100%;
-   padding-top: 3%;
-
+    width: 10%; /* Adjust the width to make the container thinner */
+    padding-top: 3%;
 }

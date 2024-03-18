@@ -28,10 +28,10 @@ function Nav({onSearchId, onSearchName, setIsDataLoaded}){
 
     return <div className={style.outterContainer}>
            <div className={style.innerContainer}> 
-              <Link to='/pokemons'><button className={style.button}>Home</button></Link>
-              <button onClick={handleLandingClick} className={style.landingButton}>Landing</button>
-              <SearchBar onSearchId={onSearchId} onSearchName={onSearchName} />
-              <button onClick={handleFormClick} className={style.formButton}>Add New Pokemon</button>
+              <div><Link to='/pokemons'><button className={style.homeButton}>Home</button></Link></div>
+              <button onClick={handleFormClick} className={style.formButton}>¡Add New Pokémon!</button>
+              <div><SearchBar onSearchId={onSearchId} onSearchName={onSearchName} /></div>
+              <button onClick={handleLandingClick} className={style.landingButton}>Reset App</button>
             </div>
             </div>
 }

@@ -1,21 +1,24 @@
 .container {
     color: black;
     background-color: lightgray;
-    border-radius: 20px;
-    width: 20%;
-    margin: 2%;
+    background-image: url("https://i.pinimg.com/474x/ed/c7/c6/edc7c6437653ab73346c7bf08c884077.jpg");
+    background-size: cover; /* Make the background image fit within the container */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat;
+    border-radius: 1px;
+    width: 240px;
+    height: 350px;
+    margin: auto; /* Center the container horizontally */
     padding: 1%;
-
-}
-
-.closeButton {
-    color: whitesmoke;
-    background-color: lightcoral;
-    width: 30%;
+    margin: 10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .image {
-    height: auto;
-    width: 100%;
+    width: 150px; /* Set the width */
+    height: 150px; /* Set the height */
     border-radius: 20px;
-} 
+    object-fit: contain; /* Ensure the entire image fits within the container */
+    margin-top: 12%;;
+}
+

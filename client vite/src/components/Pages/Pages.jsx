@@ -119,36 +119,38 @@ const onKeyDown = (e) => {
 
     return (
        <div className={style.container}>
-        <div className={style.sorterContainer} >
+        <div className={style.box} >
             <button onClick={() => handleSortByCategory('name')} className={sortBy.category === 'name' ? 'active' : ''}>
-                Ordenar por Nombre {sortBy.category === 'name' && (sortBy.direction === 'asc' ? '▲' : '▼')}
+                Sort by Name {sortBy.category === 'name' && (sortBy.direction === 'asc' ? '▲' : '▼')}
             </button>
             <button onClick={() => handleSortByCategory('attack')} className={sortBy.category === 'attack' ? 'active' : ''}>
-                Ordenar por Ataque {sortBy.category === 'attack' && (sortBy.direction === 'asc' ? '▲' : '▼')}
+                Sort by Attack {sortBy.category === 'attack' && (sortBy.direction === 'asc' ? '▲' : '▼')}
             </button>
            
 
-            <div>
-                <h2>Filtrar por Tipo</h2>
-                <select multiple={true} onChange={handleTypeChange} value={selectedTypes}>
+            <div className={style.filterTypeContainer}>
+                <h2 className={style.filterTypeTitle} >Filter by Type</h2>
+                <div className={style.filterTypeColumns}><select className={style.filterTypeColumn1} multiple={true} onChange={handleTypeChange} value={selectedTypes}>
                     {typesArray.map((type) => (
                         <option key={type} value={type}>{type}</option>
                     ))}
                 </select>
-                <button onClick={handleTypeFilter}>Aplicar Filtro</button>
+                <button className={style.filterTypeColumn2} onClick={handleTypeFilter}>Apply</button>
+                </div>
             </div>
-            <div>
-                <h2>Filtrar por Origen</h2>
-                <select multiple={false} onChange={handleOriginChange} value={selectedOrigin}>
+            <div className={style.filterOriginContainer}>
+                <h2 className={style.filterOriginTitle}>Filter by Origin</h2>
+                <div className={style.filterOriginColumns}><select className={style.filterOriginColumn1} multiple={false} onChange={handleOriginChange} value={selectedOrigin}>
                         <option value="All">All</option>
                         <option value="API">API</option>
                         <option value="DB">DB</option>
                 </select>
-                <button onClick={handleOriginFilter}>Aplicar Filtro</button>
+                < button className={style.filterOriginColumn2} onClick={handleOriginFilter}>Apply</button>
+                </div>
             <div>
-                <button onClick={handleResetFilter}>Desactivar Filtros</button>
             </div>
             </div>
+                <button className={style.resetFilterButton} onClick={handleResetFilter}>Remove Filters</button>
             
 
         </div>
@@ -170,13 +172,13 @@ const onKeyDown = (e) => {
              ))
             
           }
-         <div className={style.container}>
-             <button onClick={prevPage} disabled={pagina === 1 || pagina < 1} >Previous</button>
-             <input className={style.inputContainer} name='page' autoComplete='off' onKeyDown={(e)=> onKeyDown(e)} onChange={(e) => onChange(e)} value={input} title="Press ENTER" /> 
-             <p> of {maximo} </p>
-             <button onClick={nextPage} disabled={pagina === Math.ceil(maximo) || pagina > Math.ceil(maximo)}>Next</button>
+         <div className={style.pageNumberContainer}>
+             <button className={style.pageButtons}  onClick={prevPage} disabled={pagina === 1 || pagina < 1} >Previous</button>
+             <input className={style.pageInputContainer} name='page' autoComplete='off' onKeyDown={(e)=> onKeyDown(e)} onChange={(e) => onChange(e)} value={input} title="Press ENTER" /> 
+             <p className={style.pageEnterMessage} > of {maximo} </p>
+             <button className={style.pageButtons} onClick={nextPage} disabled={pagina === Math.ceil(maximo) || pagina > Math.ceil(maximo)}>Next</button>
              <br/>
-             <p className={style.enterMessage}> Press Enter </p>
+             <p className={style.pageEnterMessage}></p>
           </div>
        </div>
     )

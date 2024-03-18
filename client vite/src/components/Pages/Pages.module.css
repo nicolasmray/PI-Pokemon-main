@@ -1,19 +1,41 @@
 .container {
-    color:black;
+    color:rgb(34,34,36);
     display: flex;
     justify-content: center;
+    align-items: center;
     text-align: center;
     flex-wrap: wrap;
-    width:100%;
-   padding-top: 3%;
+    width:60%;
+    margin: auto;
+    margin-top: 0.5%;
+   padding: 3%;
+}
+.pageNumberContainer {
+  color:rgb(34,34,36);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  flex-wrap: wrap;
+  width:70%;
+  margin: auto;
+ padding: 3%;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.pageInputContainer {
+ width: 30px;
+ height: 30px;
+ background-color:  white;
+ font-size: 18px;
 
 }
 
-.inputContainer:hover {
+.pageInputContainer:hover {
     position: relative;
   }
   
-  .inputContainer:hover::before {
+  .pageInputContainer:hover::before {
     content: "Press ENTER"; /* Text to display on hover */
     position: absolute;
     top: calc(100% + 5px);
@@ -23,23 +45,162 @@
     color: #fff; /* Text color of the tooltip */
     padding: 5px;
     border-radius: 5px;
-    font-size: 12px;
+    font-size: 18px;
     white-space: nowrap;
   }
 
-  .enterMessage {
-    text-align: center;
-    font-size: 12px;
-    color: black; /* Color of the message */
+  .pageEnterMessage {
+  
+    font-size: 18px;
+    color: rgb(34,34,36); /* Color of the message */
+    margin: 5px;
   }
 
-  .sorterContainer {
-    color:black;
+  .pageButtons {
+    text-align: center;
+    font-size: 18px;
+    color: white; /* Color of the message */
+    background-color:  rgb(204,0,0);
+    margin: 5px;
+    width: 160px;
+    height: 70px;
+  }
+  .pageButtons:hover {
+    border-color:  white; 
+    border-width: 3px;
+    border-style:solid;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  .box {
+    color: rgb(34,34,36); 
     display: flex;
     justify-content: center;
     text-align: center;
     flex-wrap: wrap;
     width:100%;
-   padding-top: 3%;
+   padding-top: 1%;
 
+   border-bottom-color:  rgb(34,34,36); 
+   border-bottom-width: 3px;
+   border-bottom-style:solid;
+
+}
+
+
+.filterTypeContainer {
+  color:  rgb(34,34,36); 
+  background-color: white;
+  border-color: black;
+  border-bottom-color: white;
+  border-width: 3px;
+  border-style:solid;
+  height: 150px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.filterTypeTitle {
+  font-weight: bold; /* Optional styling for the title */
+  margin-bottom: 3px; /* Optional margin to separate title from columns */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.FilterTypeColumns {
+  display: flex;
+}
+.filterTypeColumn1 {
+  width: 90px; /* Set width for the columns */
+  margin-bottom: 0px; /* Optional margin to separate columns */
+  margin-right: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.filterTypeColumn2 {
+  width: 75px; /* Set width for the columns */
+  margin-top: 0px; /* Optional margin to separate columns */
+  align-self: center;
+ color: white;
+ background-color: rgb(204,0,0);
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.filterTypeColumn2:hover {
+  border-color:  white; 
+  border-width: 3px;
+  border-style:solid;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.resetFilterButton {
+  color:  white; 
+  background-color:  rgb(204,0,0);
+  border-bottom-color: white; 
+  border-top-color:  white;
+  border-color: #ffffff;
+  border-width: 10px;
+  border-bottom-width: 50px;
+  border-top-width: 50px;
+  border-bottom-style:solid;
+  text-align: center;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.resetFilterButton:hover {
+  color:  white; 
+  
+  border-color:  white; 
+  border-width: 3px;
+  border-style:solid;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.filterOriginContainer {
+  color:  rgb(34,34,36); 
+  background-color: white;
+  border-color: black;
+  border-bottom-color: white;
+  border-left-color: white;
+  border-width: 3px;
+  border-style:solid;
+  height: 150px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.filterOriginTitle {
+  font-weight: bold; /* Optional styling for the title */
+  margin-bottom: 45px; /* Optional margin to separate title from columns */
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.FilterOriginColumns {
+  display: flex;
+}
+.filterOriginColumn1 {
+  width: 90px; /* Set width for the columns */
+  margin-bottom: 0px; /* Optional margin to separate columns */
+  margin-right: 10px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.filterOriginColumn2 {
+  width: 75px; /* Set width for the columns */
+  margin-top: 0px; /* Optional margin to separate columns */
+  align-self: center;
+ color: white;
+ background-color: rgb(204,0,0);
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.filterOriginColumn2:hover {
+  border-color:  white; 
+  border-width: 3px;
+  border-style:solid;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

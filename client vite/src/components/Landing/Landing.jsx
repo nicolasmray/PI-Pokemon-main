@@ -39,10 +39,15 @@ function Landing({ onDataChange }) { // {setCharacters}, onStartClick
         // Navigate to the "/pokemons" route
         navigate('/pokemons');
       };
-  return <div className={style.container} >
-            <h1 className={style.h1}>Landing</h1>
-            <button className={style.startButton} onClick={handleStartClick}>Start</button>
-    </div>;
+  return <div className={style.outterContainer}>
+            <div className={style.container} >
+              <img src={"https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/2560px-International_Pok%C3%A9mon_logo.svg.png"} alt="failed to upload image" className={style.pkmimg} />
+              <br/>
+              <button className={style.startButton} onClick={handleStartClick}>START</button>
+              <br/>
+              <p className={style.text}>Gotta catch 'em all!</p>
+            </div>
+          </div>
 }
 
 export default Landing

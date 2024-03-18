@@ -35,10 +35,10 @@ function Detail() {
     };
 
     const formatTypes = (types) => {
-        if (!Array.isArray(types)) return ''; // Check if types is an array
+        if (!Array.isArray(types)) return ''
         return types
-            .map(type => capitalizeFirstLetter(type)) // Capitalize the first letter of each type
-            .join(', '); // Join the types back with ", " separator
+            .map(type => capitalizeFirstLetter(type)) 
+            .join(', ');
     };
 
     if (loading) {
@@ -52,15 +52,17 @@ function Detail() {
     return (
         <div className={style.container}>
             <h2>id: {character.id}</h2>
+            <img className={style.img} src={character.image} alt={character.name} />
             <h2>Name: {capitalizeFirstLetter(character.name)}</h2>
-            <h4>Height: {character.height}</h4>
-            <h4>Weight: {character.weight}</h4>
-            <img src={character.image} alt={character.name} />
-            <h4>HP: {character.hp}</h4>
-            <h4>Attack: {character.attack}</h4>
-            <h4>Defense: {character.defense}</h4>
-            <h4>Speed: {character.speed}</h4>
+            <div className={style.statsContainer} ><h4 className={style.stat} >Height: {character.height}</h4>
+            <h4 className={style.stat}>Weight: {character.weight}</h4>
+            <h4 className={style.stat}>HP: {character.hp}</h4>
+            <h4 className={style.stat} >Attack: {character.attack}</h4>
+            <h4 className={style.stat} >Defense: {character.defense}</h4>
+            <h4 className={style.stat} >Speed: {character.speed}</h4>
+            </div>
             <h4>Types: {formatTypes(character.types)}</h4>
+            
         </div>
     );
 }
