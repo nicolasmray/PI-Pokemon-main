@@ -30,20 +30,20 @@ function Card({id, name, height, weight, image, hp, attack, defense, speed, type
   //const hasTypes = types && types.length > 0;
   //console.log('Formatted Types:', formattedTypes);
    return (
-      <div className={style.container} >
+      <Link to={`/detail/${id}`} ><div className={style.container} >
          {/* <h2>Id number: {id}</h2> */}
          {/* <h2>FId number: {fid}</h2> */}
          {/* <h2>Height: {height}</h2>
          <h2>Weight: {weight}</h2> */}
          <img src={image} alt={name} className={style.image} />
-         <Link to={`/detail/${id}`} ><h2> {formattedName}</h2></Link>
+         <h2 className={style.name}> {formattedName}</h2>
          {/* <h2>HP: {hp}</h2> */}
          {/* <h2>Attack: {attack}</h2> */}
          {/*<h2>Defense: {defense}</h2>
          <h2>Speed: {speed}</h2> */}
-         <h2>{formattedTypes}</h2>
+         <h2 className={style.types}>{formattedTypes}</h2>
           
-      </div>
+      </div></Link>
    ); 
 }
 

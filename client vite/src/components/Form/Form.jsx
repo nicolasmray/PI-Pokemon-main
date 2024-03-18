@@ -166,7 +166,7 @@ function Form({data, onDataChange }) {
          { errors.fid && <p>{errors.fid}</p> }
          <br /> */}
         <label htmlFor="name">
-           Name: 
+           Name:  
            <input type="text" placeholder="Insert Name" id="name" name="name" value={userData.name} onChange={handleChange} className={errors.name ? style.error : style.name}/>
         </label>
         { errors.name && <p>{errors.name}</p> }
@@ -213,19 +213,19 @@ function Form({data, onDataChange }) {
         </label>
         { errors.speed && <p>{errors.speed}</p> }
         <br/>
-        <div>
-                <h4>Select Types:</h4>
-                <select multiple={true} onChange={handleTypeChange} value={selectedTypes}>
+        <div className={style.columns} >
+                <div className={style.column1} ><h4>Select Types:</h4>
+                <select className={style.multiple} multiple={true} onChange={handleTypeChange} value={selectedTypes}>
                     {typesArray.map((type) => (
                         <option key={type} value={type}>{type}</option>
                     ))}
-                </select>
-                <h4>Selection:</h4>
-                <h4>{selectionDisplay}</h4>
+                </select></div>
+                <div className={style.column2} ><h4>Selected:</h4>
+                <h4>{selectionDisplay}</h4></div>
             </div>
         <br/>
 
-        <button className={style.submitButton}type='submit' disabled={!isFormValid} >Submit</button>
+        <button className={style.submitButton} type='submit' disabled={!isFormValid} >Submit</button>
     </form>
     
   </div>

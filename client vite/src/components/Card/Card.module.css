@@ -6,19 +6,51 @@
     background-position: center; /* Center the background image */
     background-repeat: no-repeat;
     border-radius: 1px;
-    width: 240px;
-    height: 350px;
+    width: 300px;
+    height: 438px;
     margin: auto; /* Center the container horizontally */
     padding: 1%;
     margin: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-.image {
-    width: 150px; /* Set the width */
-    height: 150px; /* Set the height */
-    border-radius: 20px;
-    object-fit: contain; /* Ensure the entire image fits within the container */
-    margin-top: 12%;;
+.container:hover {
+    filter: contrast(120%);
 }
 
+.image {
+    width: 180px; /* Set the width */
+    height: 180px; /* Set the height */
+    border-radius: 20px;
+    object-fit: contain; /* Ensure the entire image fits within the container */
+    margin-top: 15%;;
+}
+
+
+.name {
+ 
+    margin-top: 15%;
+    font-family: 'Press Start 2P', cursive;
+    color: goldenrod;
+}
+
+.name:hover {
+ 
+    margin-top: 15%;
+    font-family: 'Press Start 2P', cursive;
+    text-decoration: underline; 
+    text-decoration-color: silver;
+}
+
+.types {
+ 
+    margin-top: 0%;
+    font-family: 'Press Start 2P', cursive;
+    color: goldenrod;
+}
+
+.types:hover {
+    font-family: 'Press Start 2P', cursive;
+    text-decoration: underline; 
+    text-decoration-color: silver;
+}

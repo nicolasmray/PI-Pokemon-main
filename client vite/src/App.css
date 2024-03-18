@@ -78,6 +78,4 @@ a {
   text-decoration: none; /* Remove the default underline */
 }
 
-a:hover {
-  text-decoration: underline; /* Add underline on hover */
-}
+
