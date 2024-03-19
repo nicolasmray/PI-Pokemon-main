@@ -9,6 +9,10 @@ export default function Pages({pagina, porPagina, setPagina, maximo, characters}
     //PAGINADO:
     const [input, setInput] =useState(1)
 
+    useEffect(() => {
+        setInput(pagina); // Update the input field value when pagina changes
+    }, [pagina]);
+    
     const nextPage = () => {
          setInput(parseInt(input) + 1)
          setPagina(parseInt(pagina) + 1)

@@ -62,6 +62,13 @@ function App() {
   const filteredPokemonList = useSelector(state => state.filteredPokemonList)
   const maximo = Math.ceil(filteredPokemonList.length / porPagina)
 
+  useEffect(() => {
+    // Reset pagina state to 1 when navigating to the landing page
+    if (pathname === '/') {
+      setPagina(1);
+    }
+  }, [pathname]);
+
   const onSearchId = async (id) => {
     function getRandomId() {
       const numeroDecimal = Math.random()
