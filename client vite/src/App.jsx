@@ -80,8 +80,8 @@ function App() {
     }
 
     try {
-      if(!id && id != 'Agregar personaje Aleatorio' ) return alert('Ingresa un ID')
-      if(characters.find(char => char.id == id)) return alert('Ya existe un personaje con el ID: ' + id)
+      if(!id && id != 'Agregar personaje Aleatorio' ) return alert('Insert ID')
+      if(characters.find(char => char.id == id)) return alert('There is a Pokémon with ID: ' + id)
       const { data } = await axios.get(`${URL}/${id}`)
       if(data.name){
         //setCharacters([data,...characters])
@@ -89,7 +89,7 @@ function App() {
         //dispatch(addCharacter(newPokemon));
         dispatch(addCharacter(data))
       }else{
-        alert('No hay personajes con ese ID')
+        alert('No Pokémons match the ID')
       }
     } catch (error) {
       alert(err.message)
@@ -98,20 +98,27 @@ function App() {
 
   const onSearchName = async (name) => {
     try {
-      if(!name) return alert('Ingrese un Nombre')
-      if(characters.find(char => char.name == name)) return alert('Ya existe un personaje con el Nombre: ' + name)
+      if(!name) return alert('Insert a Pokémon name')
+      //if(characters.find(char => char.name == name)) {         
+      const existingCharacter = characters.find(char => char.name === name);
+      if (existingCharacter) {
+        //alert('Ya existe un personaje con el Nombre: ' + name)
+        navigate(`/detail/${existingCharacter.id}`)
+        return
+      }
       const { data } = await axios.get(`${URL}/name?name=${name}`)
       if(data && data.name){ // REVISAR ESTA LINEA DATA.NAME
         //setCharacters([data,...characters])
         //FILTROS: 
         //dispatch(addCharacter(newPokemon));
         dispatch(addCharacter(data))
+        alert('Pokémon succesfully added!')
       }else{
-      alert('No hay personajes con ese Nombre')
+      alert('No Pokémons match the name')
       }
     } catch (error) {
       console.log(error.message)
-      alert('No se encontró personaje con ese nombre. Introduzca un nombre válido')
+      alert('No Pokémons match the name. Insert a valid Pokémon name')
     }     
   }
 

@@ -42,7 +42,7 @@ function Form({data, onDataChange }) {
       //return typesForFilter
       setTypesArray(typesForFilter)
     } catch (error) {
-      console.error('Error fetching types:', error)
+      console.error('Error fetching Pokémon types:', error)
     }
   };
       
@@ -114,7 +114,7 @@ function Form({data, onDataChange }) {
         setSelectedTypes([])
   
       } else if (response.data.created === false) {
-        alert('El pokemon ya existe en la base de datos!')
+        alert('Pokémon already exists in the DataBase!')
       }
     } catch (error) {
       console.error('Error submitting the form:', error)

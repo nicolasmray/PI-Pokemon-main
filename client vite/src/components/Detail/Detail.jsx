@@ -19,7 +19,7 @@ function Detail() {
                     setCharacter(data)
                     setLoading(false)
                 } else {
-                    setError('No pokemons match the ID')
+                    setError('No Pokémons match the ID')
                     setLoading(false)
                 }
             })
