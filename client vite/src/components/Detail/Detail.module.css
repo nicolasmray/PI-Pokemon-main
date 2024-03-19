@@ -12,19 +12,19 @@
 }
 
 .img {
-    width: 300px; /* Set the width of the image */
-    height: 300px; /* Set the height of the image */
+    width: 300px; 
+    height: 300px; 
 }
 
 .statsContainer {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around; /* Adjust as needed */
+    justify-content: space-around; 
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .stat {
-    width: calc(33.33% - 20px); /* Adjust width based on the number of columns */
+    width: calc(33.33% - 20px);
     margin: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

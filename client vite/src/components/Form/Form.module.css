@@ -36,63 +36,62 @@
  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 .submitButton:disabled {
-   /* Estilos cuando está deshabilitado */
    background-color: gray;
    color: white; 
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
- }
+}
 
- .submitButton:hover {
+.submitButton:hover {
    border-color: rgb(204,0,0);
    background-color: rgb(204,0,0);
    color: white;
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
- }
+}
 
 .errorHeight {
    background-color: rgb(255,222,0);
  color:rgb(34,34,36);
-  }
+}
 
-  .errorWeight {
+.errorWeight {
+background-color: rgb(255,222,0);
+ color:rgb(34,34,36);
+}
+
+.errorSpeed {
    background-color: rgb(255,222,0);
  color:rgb(34,34,36);
-  }
+}
 
-  .errorSpeed {
-   background-color: rgb(255,222,0);
- color:rgb(34,34,36);
-  }
-
-  .multiple {
+.multiple {
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    width: 100px;
    height: 150px;
-  }
+}
 
-  .form {
+.form {
    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
    text-align: left;
    margin: 1px;
-  }
+}
 
-  .columns {
+.columns {
    display: flex;
-   justify-content: space-between; /* Distribute columns evenly */
+   justify-content: space-between; 
    width: 700px;
 }
 
 .column1 {
-   flex: 1; /* Each column takes equal space */
-   padding: 0px; /* Optional padding */
+   flex: 1; 
+   padding: 0px; 
 }
+
 .column2 {
-   flex: 1; /* Each column takes equal space */
-   padding: 0px; /* Optional padding */
+   flex: 1;
+   padding: 0px; 
    overflow: auto;
 }
 
-/* To style titles differently if needed */
 .title {
    font-weight: bold;
 }

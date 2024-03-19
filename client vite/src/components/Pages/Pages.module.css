@@ -1,24 +1,25 @@
 .container {
-    color:rgb(34,34,36);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    flex-wrap: wrap;
-    width:60%;
-    margin: auto;
-    margin-top: 0.5%;
-   padding: 3%;
-}
-.pageNumberContainer {
   color:rgb(34,34,36);
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   flex-wrap: wrap;
-  width:70%;
+  width:60%;
   margin: auto;
+  margin-top: 0.5%;
+  padding: 3%;
+}
+
+.pageNumberContainer {
+ color:rgb(34,34,36);
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ text-align: center;
+ flex-wrap: wrap;
+ width:70%;
+ margin: auto;
  padding: 3%;
  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
@@ -31,61 +32,59 @@
 }
 
 .pageInputContainer:hover {
-    position: relative;
-  }
+  position: relative;
+}
   
-  .pageInputContainer:hover::before {
-    content: "Press ENTER"; /* Text to display on hover */
-    position: absolute;
-    top: calc(100% + 5px);
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #007bff; /* Background color of the tooltip */
-    color: #fff; /* Text color of the tooltip */
-    padding: 5px;
-    border-radius: 5px;
-    font-size: 18px;
-    white-space: nowrap;
-  }
-
-  .pageEnterMessage {
-  
-    font-size: 18px;
-    color: rgb(34,34,36); /* Color of the message */
-    margin: 5px;
-  }
-
-  .pageButtons {
-    text-align: center;
-    font-size: 18px;
-    color: white; /* Color of the message */
-    background-color:  rgb(204,0,0);
-    margin: 5px;
-    width: 160px;
-    height: 70px;
-  }
-  .pageButtons:hover {
-    border-color:  white; 
-    border-width: 3px;
-    border-style:solid;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  }
-
-  .box {
-    color: rgb(34,34,36); 
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    flex-wrap: wrap;
-    width:100%;
-   padding-top: 1%;
-
-   border-bottom-color:  rgb(34,34,36); 
-   border-bottom-width: 3px;
-   border-bottom-style:solid;
-
+.pageInputContainer:hover::before {
+  content: "Press ENTER"; 
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #007bff; 
+  color: #fff; 
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 18px;
+  white-space: nowrap;
 }
 
+.pageEnterMessage {
+  font-size: 18px;
+  color: rgb(34,34,36); 
+  margin: 5px;
+}
+
+.pageButtons {
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  background-color:  rgb(204,0,0);
+  margin: 5px;
+  width: 160px;
+  height: 70px;
+}
+
+.pageButtons:hover {
+  border-color:  white; 
+  border-width: 3px;
+  border-style:solid;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.box {
+  color: rgb(34,34,36); 
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  width:100%;
+  padding-top: 1%;
+  border-bottom-color:  rgb(34,34,36); 
+  border-bottom-width: 3px;
+  border-bottom-style:solid;
+
+}
 
 .filterTypeContainer {
   color:  rgb(34,34,36); 
@@ -103,23 +102,25 @@
 }
 
 .filterTypeTitle {
-  font-weight: bold; /* Optional styling for the title */
-  margin-bottom: 3px; /* Optional margin to separate title from columns */
+  font-weight: bold; 
+  margin-bottom: 3px; 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .FilterTypeColumns {
   display: flex;
 }
+
 .filterTypeColumn1 {
-  width: 90px; /* Set width for the columns */
-  margin-bottom: 0px; /* Optional margin to separate columns */
+  width: 90px; 
+  margin-bottom: 0px; 
   margin-right: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .filterTypeColumn2 {
-  width: 75px; /* Set width for the columns */
-  margin-top: 0px; /* Optional margin to separate columns */
+  width: 75px; 
+  margin-top: 0px; 
   align-self: center;
  color: white;
  background-color: rgb(204,0,0);
@@ -149,7 +150,6 @@
 
 .resetFilterButton:hover {
   color:  white; 
-  
   border-color:  white; 
   border-width: 3px;
   border-style:solid;
@@ -174,24 +174,26 @@
 }
 
 .filterOriginTitle {
-  font-weight: bold; /* Optional styling for the title */
-  margin-bottom: 45px; /* Optional margin to separate title from columns */
+  font-weight: bold; 
+  margin-bottom: 45px; 
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
 .FilterOriginColumns {
   display: flex;
 }
+
 .filterOriginColumn1 {
-  width: 90px; /* Set width for the columns */
-  margin-bottom: 0px; /* Optional margin to separate columns */
+  width: 90px; 
+  margin-bottom: 0px; 
   margin-right: 10px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .filterOriginColumn2 {
-  width: 75px; /* Set width for the columns */
-  margin-top: 0px; /* Optional margin to separate columns */
-  align-self: center;
+ width: 75px; 
+ margin-top: 0px; 
+ align-self: center;
  color: white;
  background-color: rgb(204,0,0);
  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;

@@ -4,6 +4,6 @@
     justify-content: center;
     text-align: center;
     flex-wrap: wrap;
-    width: 10%; /* Adjust the width to make the container thinner */
+    width: 10%; 
     padding-top: 3%;
 }

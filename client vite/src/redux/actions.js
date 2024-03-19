@@ -62,20 +62,3 @@ export const orderCardsCancel = (ordenCancel) => {
         payload:ordenCancel
     }
 }
-
-//  import { FILTER_POKEMON, ORDER_POKEMON } from "./actionTypes";
-//  import axios from "axios"
-
-// export const filterPokemon = (ids) => ({
-//     type: FILTER_POKEMON,
-//     payload: {
-//       ids,
-//     },
-//   });
-  
-//   export const orderPokemon = (field) => ({
-//     type: ORDER_POKEMON,
-//     payload: {
-//       field,
-//     },
-//   });

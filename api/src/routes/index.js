@@ -1,4 +1,4 @@
-const { Router } = require('express');
+const { Router } = require('express')
 // Importar todos los routers;
 // Ejemplo: const authRouter = require('./auth.js');
 const getPokemons = require("../controllers/getPokemons")
@@ -8,11 +8,7 @@ const getCharByName = require("../controllers/getCharByName")
 const getTypes = require("../controllers/getTypes")
 const resetPokemonDb = require("../controllers/resetPokemonDb")
 
-// const PokemonModel = require('../models/Pokemon.js') //.sequelizePokemon;
-// const TypeModel = require('../models/Type.js') //.sequelizeType;
-// require('../db.js');
-
-const router = Router();
+const router = Router()
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -23,5 +19,4 @@ router.get("/types/", getTypes)
 router.post("/pokemons/", addPokemon)
 router.delete("/resetpokemons/", resetPokemonDb)
 
-
-module.exports = router;
+module.exports = router

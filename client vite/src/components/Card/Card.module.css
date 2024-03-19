@@ -2,13 +2,13 @@
     color: black;
     background-color: lightgray;
     background-image: url("https://i.pinimg.com/474x/ed/c7/c6/edc7c6437653ab73346c7bf08c884077.jpg");
-    background-size: cover; /* Make the background image fit within the container */
-    background-position: center; /* Center the background image */
+    background-size: cover; 
+    background-position: center; 
     background-repeat: no-repeat;
     border-radius: 1px;
     width: 300px;
     height: 438px;
-    margin: auto; /* Center the container horizontally */
+    margin: auto; 
     padding: 1%;
     margin: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -19,23 +19,21 @@
 }
 
 .image {
-    width: 180px; /* Set the width */
-    height: 180px; /* Set the height */
+    width: 180px; 
+    height: 180px; 
     border-radius: 20px;
-    object-fit: contain; /* Ensure the entire image fits within the container */
+    object-fit: contain; 
     margin-top: 15%;;
 }
 
 
-.name {
- 
+.name { 
     margin-top: 15%;
     font-family: 'Press Start 2P', cursive;
     color: goldenrod;
 }
 
 .name:hover {
- 
     margin-top: 15%;
     font-family: 'Press Start 2P', cursive;
     text-decoration: underline; 
