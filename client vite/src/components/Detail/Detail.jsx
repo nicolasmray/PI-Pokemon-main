@@ -41,7 +41,10 @@ function Detail() {
     };
 
     if (loading) {
-        return <div>Loading...</div>
+        return <div>
+            <img src="https://cdn.dribbble.com/users/276865/screenshots/2897070/pok1.gif"/>
+            <p className={style.loading}>Loading...</p>
+        </div>
     }
 
     if (error) {
